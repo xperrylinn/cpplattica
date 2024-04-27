@@ -111,11 +111,56 @@ CMakeFiles/mpi.dir/lattice.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mpi.dir/lattice.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/lattice.cpp -o CMakeFiles/mpi.dir/lattice.cpp.s
 
+CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.o: CMakeFiles/mpi.dir/flags.make
+CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.o: /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/square_grid_lattice_2d.cpp
+CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.o: CMakeFiles/mpi.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.o -MF CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.o.d -o CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.o -c /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/square_grid_lattice_2d.cpp
+
+CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/square_grid_lattice_2d.cpp > CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.i
+
+CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/square_grid_lattice_2d.cpp -o CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.s
+
+CMakeFiles/mpi.dir/structure_builder.cpp.o: CMakeFiles/mpi.dir/flags.make
+CMakeFiles/mpi.dir/structure_builder.cpp.o: /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/structure_builder.cpp
+CMakeFiles/mpi.dir/structure_builder.cpp.o: CMakeFiles/mpi.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/mpi.dir/structure_builder.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mpi.dir/structure_builder.cpp.o -MF CMakeFiles/mpi.dir/structure_builder.cpp.o.d -o CMakeFiles/mpi.dir/structure_builder.cpp.o -c /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/structure_builder.cpp
+
+CMakeFiles/mpi.dir/structure_builder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mpi.dir/structure_builder.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/structure_builder.cpp > CMakeFiles/mpi.dir/structure_builder.cpp.i
+
+CMakeFiles/mpi.dir/structure_builder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mpi.dir/structure_builder.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/structure_builder.cpp -o CMakeFiles/mpi.dir/structure_builder.cpp.s
+
+CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.o: CMakeFiles/mpi.dir/flags.make
+CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.o: /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/simple_sqaure_2d_structure_builder.cpp
+CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.o: CMakeFiles/mpi.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.o -MF CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.o.d -o CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.o -c /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/simple_sqaure_2d_structure_builder.cpp
+
+CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/simple_sqaure_2d_structure_builder.cpp > CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.i
+
+CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/simple_sqaure_2d_structure_builder.cpp -o CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.s
+
 # Object files for target mpi
 mpi_OBJECTS = \
 "CMakeFiles/mpi.dir/main.cpp.o" \
 "CMakeFiles/mpi.dir/phases_set.cpp.o" \
-"CMakeFiles/mpi.dir/lattice.cpp.o"
+"CMakeFiles/mpi.dir/lattice.cpp.o" \
+"CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.o" \
+"CMakeFiles/mpi.dir/structure_builder.cpp.o" \
+"CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.o"
 
 # External object files for target mpi
 mpi_EXTERNAL_OBJECTS =
@@ -123,11 +168,14 @@ mpi_EXTERNAL_OBJECTS =
 mpi: CMakeFiles/mpi.dir/main.cpp.o
 mpi: CMakeFiles/mpi.dir/phases_set.cpp.o
 mpi: CMakeFiles/mpi.dir/lattice.cpp.o
+mpi: CMakeFiles/mpi.dir/square_grid_lattice_2d.cpp.o
+mpi: CMakeFiles/mpi.dir/structure_builder.cpp.o
+mpi: CMakeFiles/mpi.dir/simple_sqaure_2d_structure_builder.cpp.o
 mpi: CMakeFiles/mpi.dir/build.make
 mpi: /opt/homebrew/lib/libarmadillo.dylib
 mpi: /opt/homebrew/Cellar/open-mpi/5.0.3/lib/libmpi.dylib
 mpi: CMakeFiles/mpi.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable mpi"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable mpi"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mpi.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
