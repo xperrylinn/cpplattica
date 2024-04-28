@@ -3,10 +3,13 @@
 
 #include <vector>
 #include <utility>  // For std::pair
+#include "lattice.h"
 
 class SquareGridLattice2D : public Lattice {
-public:
-    SquareGridLattice2D();  // Constructor declaration
+    public:
+        std::vector<std::vector<double>> lattice_vecs;
+
+        SquareGridLattice2D();
 };
 
 #endif // SQUARE_GRID_LATTICE_2D_H

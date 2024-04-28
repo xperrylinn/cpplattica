@@ -1,4 +1,6 @@
 #include "phases_set.h"
+#include "lattice.h"
+#include "square_grid_lattice_2d.h"
 #include <chrono>
 #include <cmath>
 #include <cstring>
@@ -29,5 +31,22 @@ int main(int argc, char** argv) {
     arma::mat B(4, 5, arma::fill::randu);
   
     std::cout << A*B.t() << std::endl;
+
+    // Test Lattice
+    std::vector<std::vector<double>> vecs = {
+        {0.0, 1.0},
+        {1.0, 0.0}
+    };
+    Lattice lattice(vecs);
+
+    // Test SquareGridLattice2D
+    SquareGridLattice2D square_grid_lattice_2d;
+    for (const auto& vec : square_grid_lattice_2d.lattice_vecs) {
+        for (const auto& element : vec) {
+            std::cout << element << ", ";
+        }
+        std::cout << std::endl;
+    }
+
 
 }

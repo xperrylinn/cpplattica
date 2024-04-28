@@ -8,13 +8,11 @@
 
 class PhaseSet {
 public:
-    // Constructor
+    PhaseSet();
     PhaseSet(const std::vector<std::string>& phases);
 
-    // Accessor for the set of phases
     const std::unordered_set<std::string>& get_phases() const;
 
-    // Accessor for individual phases based on an integer index
     const std::string get_phase(int i) const;
 
 private:

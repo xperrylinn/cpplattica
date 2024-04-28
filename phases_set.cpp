@@ -5,6 +5,9 @@
 #include <string>
 #include "phases_set.h"
 
+
+PhaseSet::PhaseSet() {}
+
 PhaseSet::PhaseSet(const std::vector<std::string>& phases) {
     for (const std::string& phase : phases) {
         phases_set.insert(phase);

@@ -63,6 +63,10 @@
         "random": "cpp",
         "type_traits": "cpp",
         "algorithm": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "complex": "cpp",
+        "map": "cpp",
+        "cassert": "cpp",
+        "unordered_set": "cpp"
     }
 }
