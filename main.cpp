@@ -1,6 +1,7 @@
 #include "phases_set.h"
 #include "lattice.h"
 #include "square_grid_lattice_2d.h"
+#include "discrete_grid_setup.h"
 #include <chrono>
 #include <cmath>
 #include <cstring>
@@ -11,10 +12,6 @@
 #include <vector>
 #include <armadillo>
 
-
-// ==============
-// Main Function
-// ==============
 
 int main(int argc, char** argv) {
 
@@ -47,6 +44,8 @@ int main(int argc, char** argv) {
         }
         std::cout << std::endl;
     }
+
+    DiscreteGridSetup setup = DiscreteGridSetup(phase_set);
 
 
 }

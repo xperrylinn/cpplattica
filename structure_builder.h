@@ -5,6 +5,7 @@
 #include <string>
 #include <unordered_map>
 #include "lattice.h"
+#include "periodic_structure.h"
 
 
 class StructureBuilder {
@@ -14,8 +15,8 @@ class StructureBuilder {
         std::unordered_map<std::string, std::vector<std::vector<int>>> motif;
 
         StructureBuilder();
-
         StructureBuilder(Lattice& lattice, const std::unordered_map<std::string, std::vector<std::vector<int>>>& motif);
+        PeriodicStructure build(int size);
 };
 
 #endif // STRUCTUREBUILDER_H

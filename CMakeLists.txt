@@ -34,6 +34,10 @@ add_executable(
     simple_sqaure_2d_structure_builder.cpp
     discrete_grid_setup.h
     discrete_grid_setup.cpp
+    simulation.h
+    simulation.cpp
+    periodic_structure.h
+    periodic_structure.cpp
 )
 
 target_link_libraries(mpi PRIVATE MPI::MPI_CXX ${ARMADILLO_LIBRARIES})

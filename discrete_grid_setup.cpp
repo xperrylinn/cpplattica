@@ -1,4 +1,5 @@
 #include "discrete_grid_setup.h"
+#include "simulation.h"
 
 
 DiscreteGridSetup::DiscreteGridSetup(PhaseSet& phase_set, int dim) {
@@ -8,4 +9,8 @@ DiscreteGridSetup::DiscreteGridSetup(PhaseSet& phase_set, int dim) {
         throw std::invalid_argument("Logic only implemented for dim = 2.");
     } 
     this->phase_set = phase_set;
+}
+
+Simulation DiscreteGridSetup::setup_noise(PhaseSet& phase_set, int size) {
+
 }
