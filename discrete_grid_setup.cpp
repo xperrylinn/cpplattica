@@ -1,5 +1,6 @@
 #include "discrete_grid_setup.h"
 #include "simulation.h"
+#include "periodic_structure.h"
 
 
 DiscreteGridSetup::DiscreteGridSetup(PhaseSet& phase_set, int dim) {
@@ -12,6 +13,7 @@ DiscreteGridSetup::DiscreteGridSetup(PhaseSet& phase_set, int dim) {
 }
 
 Simulation DiscreteGridSetup::setup_noise(PhaseSet& phase_set, int size) {
+    PeriodicStructure structure = this->_builder.build(size);
     
     return Simulation();
 }

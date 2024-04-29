@@ -5,6 +5,7 @@
 #include "structure_builder.h"
 #include "square_grid_lattice_2d.h"
 #include "simple_sqaure_2d_structure_builder.h"
+#include "periodic_structure.h"
 
 
 
@@ -18,4 +19,14 @@ SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder() {
     temp[site_class] = site_position_vector;
     this->motif = temp;
     StructureBuilder(this->lattice, this->motif);
+}
+
+
+PeriodicStructure SimpleSquare2DStructureBuilder::build(int size) {
+    std::vector<int> size_vector;
+    for (int i = 0; i < this->lattice.dim; i += 1) {
+        size_vector.push_back(size);
+    }
+    PeriodicStructure periodic_structure = PeriodicStructure::build_from(this->lattice, size_vector, this->motif, this->frac_coords);
+    return periodic_structure;
 }

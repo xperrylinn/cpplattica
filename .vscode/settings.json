@@ -68,6 +68,7 @@
         "map": "cpp",
         "cassert": "cpp",
         "unordered_set": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "functional": "cpp"
     }
 }

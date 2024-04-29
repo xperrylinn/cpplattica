@@ -7,6 +7,7 @@
 #include "simple_sqaure_2d_structure_builder.h"
 #include "phases_set.h"
 #include "simulation.h"
+#include "simulation_state.h"
 
 
 class DiscreteGridSetup {
@@ -16,7 +17,7 @@ class DiscreteGridSetup {
         Simulation setup_noise(PhaseSet& phase_set, int size);
     private:
         SimpleSquare2DStructureBuilder _builder;
-
+        SimulationState _build_blank_state(PeriodicStructure structure);
 };
 
 #endif // DISCRETEGRIDSETUP_H

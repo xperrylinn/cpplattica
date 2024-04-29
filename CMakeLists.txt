@@ -39,6 +39,8 @@ add_executable(
     simulation.cpp
     periodic_structure.h
     periodic_structure.cpp
+    simulation_state.h
+    simulation_state.cpp
 )
 
 target_link_libraries(mpi PRIVATE MPI::MPI_CXX ${ARMADILLO_LIBRARIES})

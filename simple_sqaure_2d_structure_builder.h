@@ -20,8 +20,7 @@ class SimpleSquare2DStructureBuilder : public StructureBuilder {
         std::unordered_map<std::string, std::vector<std::vector<int>>> motif;
 
         SimpleSquare2DStructureBuilder();
-        PeriodicStructure build();
-
+        PeriodicStructure build(int size);
 };
 
 #endif // SIMPLESQUARE2DSTRUCTUREBUILDER_H
