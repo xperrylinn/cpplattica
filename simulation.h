@@ -9,7 +9,6 @@
 
 class Simulation {
     public:
-        int hello_world;
 
         Simulation();
 };

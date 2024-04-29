@@ -12,5 +12,6 @@ DiscreteGridSetup::DiscreteGridSetup(PhaseSet& phase_set, int dim) {
 }
 
 Simulation DiscreteGridSetup::setup_noise(PhaseSet& phase_set, int size) {
-
+    
+    return Simulation();
 }

@@ -18,6 +18,9 @@ class Lattice {
 
         Lattice();
         Lattice(const std::vector<std::vector<double>>& vecs, bool periodic = true);
+        Lattice(const std::vector<std::vector<double>>& vecs, std::vector<bool> periodic);
+
+        Lattice get_scaled_lattice(std::vector<int> num_cells);
 
     private:
         

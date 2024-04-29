@@ -21,7 +21,8 @@ endif ()
 
 add_executable(
     mpi 
-    main.cpp 
+    main.cpp
+    helpers.h
     phases_set.h 
     phases_set.cpp 
     lattice.h 

@@ -8,6 +8,7 @@
 #include <string>
 #include "structure_builder.h"
 #include "square_grid_lattice_2d.h"
+#include "periodic_structure.h"
 
 #define site_position 0
 
@@ -19,6 +20,8 @@ class SimpleSquare2DStructureBuilder : public StructureBuilder {
         std::unordered_map<std::string, std::vector<std::vector<int>>> motif;
 
         SimpleSquare2DStructureBuilder();
+        PeriodicStructure build();
+
 };
 
 #endif // SIMPLESQUARE2DSTRUCTUREBUILDER_H
