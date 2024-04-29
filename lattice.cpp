@@ -12,7 +12,7 @@ Lattice::Lattice(const std::vector<std::vector<double>>& vecs, bool periodic) {
         this->periodic.push_back(true);
     }    
 
-    Lattice(vecs, periodic);
+    Lattice(vecs, this->periodic);
 }
 
 Lattice::Lattice(const std::vector<std::vector<double>>& vecs, std::vector<bool> periodic) {
