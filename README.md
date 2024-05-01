@@ -52,7 +52,7 @@ Set a breakpoint in a specific file:
 > breakpoint set --file /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/main.cpp --line 39
 ```
 
-Online resource, (LLBDB Quick Reference)[https://www.cs.williams.edu/~morgan/cs136-f15/lldb.html]
+Online resource, [LLBDB Quick Reference](https://www.cs.williams.edu/~morgan/cs136-f15/lldb.html)
 
 ## On NERSC
 

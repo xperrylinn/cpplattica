@@ -8,8 +8,9 @@
 class SquareGridLattice2D : public Lattice {
     public:
         std::vector<std::vector<double>> lattice_vecs;
-
+        
         SquareGridLattice2D();
+        SquareGridLattice2D(std::vector<std::vector<double>> lattice_vecs);
 };
 
 #endif // SQUARE_GRID_LATTICE_2D_H

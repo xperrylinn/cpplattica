@@ -3,7 +3,6 @@
 #include "lattice.h"
 
 
-SquareGridLattice2D::SquareGridLattice2D() {
-    this->lattice_vecs = {{0.0, 1.0}, {1.0, 0.0}};
-    Lattice(this->lattice_vecs);
-}
+SquareGridLattice2D::SquareGridLattice2D() {}
+
+SquareGridLattice2D::SquareGridLattice2D(std::vector<std::vector<double>> lattice_vecs) : Lattice(lattice_vecs) {}

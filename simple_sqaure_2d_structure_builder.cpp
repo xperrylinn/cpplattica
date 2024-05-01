@@ -8,22 +8,20 @@
 #include "periodic_structure.h"
 
 
-
 std::string SimpleSquare2DStructureBuilder::site_class = "_A";
 
+// SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder() {}
 
-SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder() {
-    this->lattice = SquareGridLattice2D();
-    std::vector<std::vector<int>> site_position_vector = {{site_position, site_position}};
-    std::unordered_map<std::string, std::vector<std::vector<int>>> temp;
-    temp[site_class] = site_position_vector;
-    this->motif = temp;
-    StructureBuilder(this->lattice, this->motif);
+SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder(
+    Lattice& lattice, 
+    const std::unordered_map<std::string, std::vector<std::vector<int>>>& motif
+) : StructureBuilder(lattice, motif) {
+
 }
-
 
 PeriodicStructure SimpleSquare2DStructureBuilder::build(int size) {
     std::vector<int> size_vector;
+    std::cout << "this->lattice.dim " << this->lattice.dim << std::endl;
     for (int i = 0; i < this->lattice.dim; i += 1) {
         size_vector.push_back(size);
     }

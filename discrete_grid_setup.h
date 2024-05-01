@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <memory>
 #include "simple_sqaure_2d_structure_builder.h"
 #include "phases_set.h"
 #include "simulation.h"
@@ -16,8 +17,8 @@ class DiscreteGridSetup {
         DiscreteGridSetup(PhaseSet& phase_set, int dim = 2);
         Simulation setup_noise(PhaseSet& phase_set, int size);
     private:
-        SimpleSquare2DStructureBuilder _builder;
-        SimulationState _build_blank_state(PeriodicStructure structure);
+        std::unique_ptr<SimpleSquare2DStructureBuilder> _builder;
+        SimulationState _build_blank_state(const PeriodicStructure& structure);
 };
 
 #endif // DISCRETEGRIDSETUP_H

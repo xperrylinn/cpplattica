@@ -1,5 +1,6 @@
 #include "structure_builder.h"
 #include "lattice.h"
+#include "helpers.h"
 #include <vector>
 #include <string>
 #include <unordered_map>

@@ -2,20 +2,35 @@
 #include "helpers.h"
 
 
-Lattice::Lattice() {};
+Lattice::Lattice() { std::cout << "Lattice()" << std::endl; this->dim = -1;};
 
 Lattice::Lattice(const std::vector<std::vector<double>>& vecs, bool periodic) {
-    assert(!vecs.empty() && "Lattice vectors cannot be empty");
-    
+    std::cout << "HELLO Lattice(const std::vector<std::vector<double>>& vecs, bool periodic)" << std::endl;
+
     this->periodic = {};
     for (const auto& vec : vecs) {
         this->periodic.push_back(true);
     }    
 
-    Lattice(vecs, this->periodic);
+    this->vecs = vecs;
+    
+    this->mat = {
+        {0.0, 1.0},
+        {1.0, 0.0}
+    };
+
+    this->vec_lengths = {};
+    for (const auto& vec : vecs) {
+        arma::vec temp_vec(vec);
+        double norm = arma::norm(temp_vec, 2);
+        this->vec_lengths.push_back(norm);
+    }
+
+    this->dim = vecs.size();
 }
 
 Lattice::Lattice(const std::vector<std::vector<double>>& vecs, std::vector<bool> periodic) {
+    std::cout << "HELLO Lattice(const std::vector<std::vector<double>>& vecs, std::vector<bool> periodic)" << std::endl;
     assert(!vecs.empty() && "Lattice vectors cannot be empty");
 
     this->vecs = vecs;
@@ -35,7 +50,9 @@ Lattice::Lattice(const std::vector<std::vector<double>>& vecs, std::vector<bool>
     }
 
     this->dim = vecs.size();
+    this->dim = 2;
 }
+
 
 Lattice Lattice::get_scaled_lattice(std::vector<int> num_cells) {
     std::vector<std::tuple<int, std::vector<double>>> zipped_vecs = zip(num_cells, this->vecs);
