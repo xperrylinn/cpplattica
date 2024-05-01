@@ -15,8 +15,8 @@ DiscreteGridSetup::DiscreteGridSetup(PhaseSet& phase_set, int dim) : phase_set(p
         std::vector<std::vector<int>> site_position_vector = {{site_position, site_position}};
         std::unordered_map<std::string, std::vector<std::vector<int>>> motif;
         motif[SimpleSquare2DStructureBuilder::site_class] = site_position_vector;
-        // this->_builder = SimpleSquare2DStructureBuilder(lattice, motif);
-        this->_builder.reset(new SimpleSquare2DStructureBuilder(lattice, motif));
+        // this->_builder.reset(new SimpleSquare2DStructureBuilder(lattice, motif));
+        this->_builder = SimpleSquare2DStructureBuilder(lattice, motif);
     } else {
         throw std::invalid_argument("Logic only implemented for dim = 2.");
     } 
@@ -25,7 +25,8 @@ DiscreteGridSetup::DiscreteGridSetup(PhaseSet& phase_set, int dim) : phase_set(p
 
 Simulation DiscreteGridSetup::setup_noise(PhaseSet& phase_set, int size) {
     std::cout << "here?" << std::endl;
-    PeriodicStructure structure = this->_builder->build(size);
+    // PeriodicStructure structure = this->_builder->build(size);
+    PeriodicStructure structure = this->_builder.build(size);
     // SimulationState state = this->_build_blank_state(structure);
 
     return Simulation();

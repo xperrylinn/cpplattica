@@ -10,7 +10,7 @@
 
 std::string SimpleSquare2DStructureBuilder::site_class = "_A";
 
-// SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder() {}
+SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder() {}
 
 SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder(
     Lattice& lattice, 
