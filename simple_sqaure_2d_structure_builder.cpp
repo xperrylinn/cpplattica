@@ -10,11 +10,15 @@
 
 std::string SimpleSquare2DStructureBuilder::site_class = "_A";
 
-SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder() {}
+SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder() {
+    static std::string site_class;
+    SquareGridLattice2D lattice;
+    std::unordered_map<std::string, arma::mat> motif;
+}
 
 SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder(
     Lattice& lattice, 
-    const std::unordered_map<std::string, std::vector<std::vector<int>>>& motif
+    const std::unordered_map<std::string, arma::mat>& motif
 ) : StructureBuilder(lattice, motif) {
 
 }
@@ -25,6 +29,11 @@ PeriodicStructure SimpleSquare2DStructureBuilder::build(int size) {
     for (int i = 0; i < this->lattice.dim; i += 1) {
         size_vector.push_back(size);
     }
-    PeriodicStructure periodic_structure = PeriodicStructure::build_from(this->lattice, size_vector, this->motif, this->frac_coords);
+    PeriodicStructure periodic_structure = PeriodicStructure::build_from(
+        this->lattice, 
+        size_vector, 
+        this->motif, 
+        this->frac_coords
+    );
     return periodic_structure;
 }

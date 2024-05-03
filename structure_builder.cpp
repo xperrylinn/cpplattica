@@ -12,7 +12,7 @@ StructureBuilder::StructureBuilder() {}
 
 StructureBuilder::StructureBuilder(
     Lattice& lattice, 
-    const std::unordered_map<std::string, std::vector<std::vector<int>>>& motif
+    const std::unordered_map<std::string, arma::mat>& motif
 ) {
     this->lattice = lattice;
     this->motif = motif;

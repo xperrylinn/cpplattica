@@ -1,5 +1,6 @@
 #ifndef HELPERS_H
 #define HELPERS_H
+#include <armadillo>
 #include <iostream>
 #include <vector>
 #include <tuple>
@@ -27,38 +28,40 @@ void print_vector(const std::vector<T>& vec) {
 }
 
 template<typename T>
-std::vector<std::vector<T>> get_points_in_box(const std::vector<T>& lbs, const std::vector<T>& ubs) {
-    std::vector<std::vector<T>> result;
+arma::mat get_points_in_box(const std::vector<T>& lbs, const std::vector<T>& ubs) {
+    // Calculate the number of dimensions
+    size_t dim = lbs.size();
 
-    // Create a vector of vectors to store the ranges
-    std::vector<std::vector<T>> args;
-    for (size_t i = 0; i < lbs.size(); ++i) {
-        std::vector<T> range(ubs[i] - lbs[i]);
-        std::iota(range.begin(), range.end(), lbs[i]);
-        args.push_back(range);
+    // Compute the total number of points
+    size_t total_points = 1;
+    for (size_t i = 0; i < dim; ++i) {
+        total_points *= (ubs[i] - lbs[i]);
     }
 
-    // Compute the Cartesian product
-    for (const auto& vec : args) {
-        if (result.empty()) {
-            for (const auto& elem : vec) {
-                result.push_back({elem});
+    // Create the result matrix
+    arma::mat result(dim, total_points);
+
+    // Initialize the index vector
+    std::vector<size_t> index(dim, 0);
+
+    // Populate the result matrix
+    for (size_t i = 0; i < total_points; ++i) {
+        // Set the current point
+        for (size_t j = 0; j < dim; ++j) {
+            result(j, i) = lbs[j] + index[j];
+        }
+
+        // Update the index for the next point
+        for (size_t j = 0; j < dim; ++j) {
+            index[j]++;
+            if (index[j] < static_cast<size_t>(ubs[j] - lbs[j])) {
+                break;
             }
-        } else {
-            std::vector<std::vector<T>> temp;
-            for (const auto& elem : vec) {
-                for (auto& res : result) {
-                    auto temp_res = res;
-                    temp_res.push_back(elem);
-                    temp.push_back(temp_res);
-                }
-            }
-            result = temp;
+            index[j] = 0;
         }
     }
 
     return result;
 }
-
 
 #endif

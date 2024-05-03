@@ -9,7 +9,7 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
-// #include <mpi.h>
+#include <mpi.h>
 #include <random>
 #include <vector>
 #include <armadillo>
@@ -22,7 +22,6 @@ int main(int argc, char** argv) {
     PhaseSet phase_set = PhaseSet(phases);
     int size = 4;
     DiscreteGridSetup setup = DiscreteGridSetup(phase_set);
-    // std::cout << "here?" << std::endl;
-    // Simulation starting_state = setup.setup_noise(phase_set, size);
-
+    std::cout << "here?" << std::endl;
+    Simulation starting_state = setup.setup_noise(phase_set, size);
 }

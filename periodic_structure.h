@@ -6,6 +6,7 @@
 #include <cmath>
 #include <armadillo>
 #include <unordered_map>
+#include <tuple>
 #include "lattice.h"
 #include "site.h"
 
@@ -24,10 +25,10 @@ class PeriodicStructure {
         static PeriodicStructure build_from(
             Lattice lattice, 
             std::vector<int> num_cells, 
-            std::unordered_map<std::string, std::vector<std::vector<int>>>& motif,
-            const bool frac_coords    
+            std::unordered_map<std::string, arma::mat>& motif,
+            const bool frac_coords = false
         );
-        // std::vector<std::unordered_map<>>
+        int add_site(std::string site_class, std::tuple<int, int> coordinate);
 
         private:
             std::vector<Site> _sites;

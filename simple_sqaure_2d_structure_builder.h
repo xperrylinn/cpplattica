@@ -10,14 +10,14 @@
 #include "square_grid_lattice_2d.h"
 #include "periodic_structure.h"
 
-#define site_position 0
+#define site_position 0.0
 
 
 class SimpleSquare2DStructureBuilder : public StructureBuilder {
     public:
         static std::string site_class;
         SquareGridLattice2D lattice;
-        std::unordered_map<std::string, std::vector<std::vector<int>>> motif;
+        std::unordered_map<std::string, arma::mat> motif;
 
         // SimpleSquare2DStructureBuilder() = delete;
         // SimpleSquare2DStructureBuilder(const SimpleSquare2DStructureBuilder& copy) = delete;
@@ -25,7 +25,7 @@ class SimpleSquare2DStructureBuilder : public StructureBuilder {
 
         SimpleSquare2DStructureBuilder(
             Lattice& lattice,
-            const std::unordered_map<std::string, std::vector<std::vector<int>>>& motif
+            const std::unordered_map<std::string, arma::mat>& motif
         );
         PeriodicStructure build(int size);
 };
