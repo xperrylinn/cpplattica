@@ -13,8 +13,14 @@ class Site {
 
         Site();
 
+        Site(
+            arma::vec _location,
+            std::string _site_class,
+            int _site_id
+        );
+
     private:
-        std::vector<double> _location;
+        arma::vec _location;
         std::string _site_class;
         int _site_id;
 };

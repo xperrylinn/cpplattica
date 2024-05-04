@@ -2,11 +2,14 @@
 #define HELPERS_H
 #include <armadillo>
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include <tuple>
 #include <iterator>
 #include <algorithm>
 
+
+std::string vec_to_string(const arma::vec& vec);
 
 template<typename T, typename U>
 std::vector<std::tuple<T, U>> zip(const std::vector<T>& vec1, const std::vector<U>& vec2) {

@@ -23,7 +23,7 @@ DiscreteGridSetup::DiscreteGridSetup(PhaseSet& phase_set, int dim) : phase_set(p
 }
 
 Simulation DiscreteGridSetup::setup_noise(PhaseSet& phase_set, int size) {
-    std::cout << "here?" << std::endl;
+    std::cout << "DiscreteGridSetup::setup_noise(PhaseSet& phase_set, int size)" << std::endl;
     // PeriodicStructure structure = this->_builder->build(size);
     PeriodicStructure structure = this->_builder.build(size);
     // SimulationState state = this->_build_blank_state(structure);

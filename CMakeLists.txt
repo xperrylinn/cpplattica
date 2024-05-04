@@ -22,7 +22,9 @@ endif ()
 add_executable(
     mpi 
     main.cpp
+    constants.h
     helpers.h
+    helpers.cpp
     phases_set.h 
     phases_set.cpp 
     lattice.h 
