@@ -32,12 +32,15 @@ Lattice::Lattice(const std::vector<std::vector<double>>& vecs, bool periodic) {
 
     this->vecs = vecs;
     
-    this->mat = {
-        {0.0, 1.0},
-        {1.0, 0.0}
-    };
-    this->_inv_matrix = arma::inv(mat.i());
-    this->_matrix = arma::mat(this->mat);
+    arma::mat temp_mat(vecs.size(), vecs[0].size());
+    for (int i = 0; i < vecs.size(); i += 1) {
+        for (int j = 0; j < vecs[0].size(); j += 1) {
+            temp_mat(i, j) = vecs[i][j];
+        }
+    }
+    this->_matrix = temp_mat;
+
+    this->_inv_matrix = this->_matrix.i();
 
     this->vec_lengths = {};
     for (const auto& vec : vecs) {
@@ -57,12 +60,16 @@ Lattice::Lattice(const std::vector<std::vector<double>>& vecs, arma::vec periodi
     
     this->periodic = periodic;
 
-    this->mat = {
-        {0.0, 1.0},
-        {1.0, 0.0}
-    };
-    this->_inv_matrix = arma::inv(mat.i());
-    this->_matrix = arma::mat(this->mat);
+    arma::mat temp_mat(vecs.size(), vecs[0].size());
+    for (int i = 0; i < vecs.size(); i += 1) {
+        for (int j = 0; j < vecs[0].size(); j += 1) {
+            temp_mat(i, j) = vecs[i][j];
+        }
+    }
+    this->_matrix = temp_mat;
+
+    this->_inv_matrix = this->_matrix.i();
+    this->_matrix = arma::mat(this->_matrix);
 
     this->vec_lengths = {};
     for (const auto& vec : vecs) {
@@ -117,4 +124,12 @@ arma::vec Lattice::get_periodized_cartesian_coords(const arma::vec& cart_coords)
     arma::vec result = cart_coords;
     result = this->get_fractional_coords(result);
     return this->get_cartesian_coords(periodize(result, this->periodic));
+}
+
+arma::mat Lattice::get_matrix() const {
+    return this->_matrix;
+}
+
+arma::mat Lattice::get_inverse_matrix() const {
+    return this->_inv_matrix;
 }

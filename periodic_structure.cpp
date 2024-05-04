@@ -42,11 +42,11 @@ PeriodicStructure PeriodicStructure::build_from(
     std::cout << "points" << std::endl;
     std::cout << points << std::endl;
     if (!frac_coords) {
-        points = lattice.mat * points;
+        points = lattice.get_matrix() * points;
     }
 
     std::cout << "lattice.mat" << std::endl;
-    std::cout << lattice.mat << std::endl;
+    std::cout << lattice.get_matrix() << std::endl;
 
     std::cout << "points" << std::endl;
     std::cout << points << std::endl;
@@ -118,7 +118,8 @@ int PeriodicStructure::add_site(const std::string& site_class, const arma::vec& 
     Site new_site(
         location,
         site_class,
-        new_site_id
+        new_site_id,
+        -1
     );
     this->_sites.push_back(new_site);
     std::string vec_string_has = vec_to_string(offset_periodized_coords);
@@ -126,4 +127,8 @@ int PeriodicStructure::add_site(const std::string& site_class, const arma::vec& 
     this->site_ids.push_back(new_site_id);
 
     return new_site_id;
+}
+
+const std::vector<Site> PeriodicStructure::sites() const {
+    return this->_sites;
 }

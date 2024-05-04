@@ -32,6 +32,8 @@ class PeriodicStructure {
         arma::vec _transformed_coords(const arma::vec& location);
         arma::vec _coords_with_offset(const arma::vec& location);
         int add_site(const std::string& site_class, const arma::vec& location);
+        const std::vector<Site> sites() const;
+        const std::vector<Site> sites(std::string site_class) const;
 
         private:
             std::vector<Site> _sites;

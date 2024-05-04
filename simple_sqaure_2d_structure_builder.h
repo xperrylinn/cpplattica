@@ -19,10 +19,7 @@ class SimpleSquare2DStructureBuilder : public StructureBuilder {
         SquareGridLattice2D lattice;
         std::unordered_map<std::string, arma::mat> motif;
 
-        // SimpleSquare2DStructureBuilder() = delete;
-        // SimpleSquare2DStructureBuilder(const SimpleSquare2DStructureBuilder& copy) = delete;
         SimpleSquare2DStructureBuilder();
-
         SimpleSquare2DStructureBuilder(
             Lattice& lattice,
             const std::unordered_map<std::string, arma::mat>& motif

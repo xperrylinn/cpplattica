@@ -14,15 +14,20 @@ class Site {
         Site();
 
         Site(
-            arma::vec _location,
-            std::string _site_class,
-            int _site_id
+            arma::vec location,
+            std::string site_class,
+            int site_id,
+            int state
         );
+
+        int site_id() const;
+        void set_site_state(int state);
 
     private:
         arma::vec _location;
         std::string _site_class;
         int _site_id;
+        int _state;
 };
 
 #endif

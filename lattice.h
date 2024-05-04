@@ -15,7 +15,6 @@ class Lattice {
         std::vector<std::vector<double>> vecs;
         arma::vec periodic;
         int dim;
-        arma::mat mat;
         std::vector<double> vec_lengths;
 
         Lattice();
@@ -26,9 +25,11 @@ class Lattice {
         Lattice get_scaled_lattice(const std::vector<int>& num_cells);
         arma::vec get_periodized_cartesian_coords(const arma::vec& cart_coords);
         arma::vec get_fractional_coords(const arma::vec& cart_coords);
+        arma::mat get_matrix() const;
+        arma::mat get_inverse_matrix() const;
     private:
         
-        std::vector<bool> _periodic_bool;   // Not used anywhere
+        std::vector<bool> _periodic_bool;
         arma::mat _matrix;
         arma::mat _inv_matrix;
 };

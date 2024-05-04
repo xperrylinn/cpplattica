@@ -20,8 +20,10 @@ int main(int argc, char** argv) {
     // Test DiscreteGridSetup
     std::vector<std::string> phases = {"alive", "dead"};    
     PhaseSet phase_set = PhaseSet(phases);
+    std::cout << "creating PhaseSet" << std::endl;
     int size = 4;
     DiscreteGridSetup setup = DiscreteGridSetup(phase_set);
-    std::cout << "here?" << std::endl;
+    std::cout << "creating DiscreteGridSetup" << std::endl;
     Simulation starting_state = setup.setup_noise(phase_set, size);
+    std::cout << "created Simulation" << std::endl;
 }
