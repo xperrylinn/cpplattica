@@ -10,7 +10,7 @@ class SynchronousRunner : public Runner {
     public:
         SynchronousRunner();
 
-        SimulationResult _run(SimulationState initial_state, BasicController controller, int num_steps);
+        SimulationResult run(SimulationState initial_state, BasicController controller, int num_steps);
 };
 
 #endif

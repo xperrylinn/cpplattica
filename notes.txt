@@ -1,1 +1,11 @@
 breakpoint set --file /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/main.cpp --line 21
+
+
+
+
+
+NeighborhoodBuilder.get() --> constructs graph from NeighborhoodBuilder.get_neighborhors()
+
+NeighborhoodBuilder.get_neighbors() --> given a site and a periodic structure
+uses motif vectors to grab adjacent sites
+

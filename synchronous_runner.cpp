@@ -5,7 +5,7 @@
 
 SynchronousRunner::SynchronousRunner() {}
 
-SimulationResult SynchronousRunner::_run(SimulationState initial_state, BasicController controller, int num_steps) {
+SimulationResult SynchronousRunner::run(SimulationState initial_state, BasicController controller, int num_steps) {
     SimulationResult result = controller.instantiate_result(initial_state);
     controller.pre_run(initial_state);
     // live_state = initial_state.copy()

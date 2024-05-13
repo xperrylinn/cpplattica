@@ -11,7 +11,7 @@
 class BasicController {
     public:
         int get_state_update(int site_id, SimulationState prev_state);
-        virtual void pre_run(SimulationState initial_state) = 0;
+        virtual void pre_run(SimulationState initial_state) {} ;
         //virtual void draw() const = 0;
         int get_random_site(SimulationState state);
         SimulationResult instantiate_result(SimulationState starting_state);
