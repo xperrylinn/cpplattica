@@ -15,6 +15,7 @@ class SimulationState {
         SimulationState();
 
         void set_site_state(int site_id, int state);
+        int num_sites();
 
     private:
         std::unordered_map<int, Site> _sites;

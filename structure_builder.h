@@ -19,4 +19,4 @@ class StructureBuilder {
         PeriodicStructure build(int size);
 };
 
-#endif // STRUCTUREBUILDER_H
+#endif

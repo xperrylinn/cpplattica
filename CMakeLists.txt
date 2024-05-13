@@ -43,8 +43,30 @@ add_executable(
     periodic_structure.cpp
     simulation_state.h
     simulation_state.cpp
+    simulation_result.cpp
+    simulation_result.h
     site.h
     site.cpp
+    basic_controller.h
+    basic_controller.cpp
+    game_of_life_controller.h
+    game_of_life_controller.cpp
+    neighborhood_builder.h
+    neighborhood_builder.cpp
+    motif_neighborhood_builder.h
+    motif_neighborhood_builder.cpp
+    moore_neighborhood_builder.h
+    moore_neighborhood_builder.cpp
+    neighborhood.h
+    neighborhood.cpp
+    distance_map.h
+    distance_map.cpp
+    euclidean_distance_map.h
+    euclidean_distance_map.cpp
+    synchronous_runner.h
+    synchronous_runner.cpp
+    runner.h
+    runner.cpp
 )
 
 target_link_libraries(mpi PRIVATE MPI::MPI_CXX ${ARMADILLO_LIBRARIES})

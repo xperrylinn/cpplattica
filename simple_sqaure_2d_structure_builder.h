@@ -27,4 +27,4 @@ class SimpleSquare2DStructureBuilder : public StructureBuilder {
         PeriodicStructure build(int size);
 };
 
-#endif // SIMPLESQUARE2DSTRUCTUREBUILDER_H
+#endif

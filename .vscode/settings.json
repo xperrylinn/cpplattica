@@ -72,6 +72,12 @@
         "functional": "cpp",
         "__tree": "cpp",
         "filesystem": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "stack": "cpp",
+        "execution": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp",
+        "memory_resource": "cpp",
+        "utility": "cpp"
     }
 }

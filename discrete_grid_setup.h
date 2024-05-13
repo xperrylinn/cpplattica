@@ -22,6 +22,7 @@ class DiscreteGridSetup {
         // SimpleSquare2DStructureBuilder _builder;
         StructureBuilder _builder;
         SimulationState _build_blank_state(const PeriodicStructure& structure);
+        
 };
 
 #endif // DISCRETEGRIDSETUP_H

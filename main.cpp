@@ -2,6 +2,7 @@
 #include "lattice.h"
 #include "square_grid_lattice_2d.h"
 #include "discrete_grid_setup.h"
+#include "game_of_life_controller.h"
 #include "simulation.h"
 #include "helpers.h"
 #include <chrono>
@@ -26,4 +27,5 @@ int main(int argc, char** argv) {
     std::cout << "creating DiscreteGridSetup" << std::endl;
     Simulation starting_state = setup.setup_noise(phase_set, size);
     std::cout << "created Simulation" << std::endl;
+    GameOfLifeController controller(starting_state.structure);
 }

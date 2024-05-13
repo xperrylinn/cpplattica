@@ -30,41 +30,10 @@ void print_vector(const std::vector<T>& vec) {
     std::cout << "]" << std::endl;
 }
 
-template<typename T>
-arma::mat get_points_in_box(const std::vector<T>& lbs, const std::vector<T>& ubs) {
-    // Calculate the number of dimensions
-    size_t dim = lbs.size();
+arma::mat get_points_in_box(const std::vector<int>& lbs, const std::vector<int>& ubs);
 
-    // Compute the total number of points
-    size_t total_points = 1;
-    for (size_t i = 0; i < dim; ++i) {
-        total_points *= (ubs[i] - lbs[i]);
-    }
+arma::mat get_points_in_cube(int lb, int ub, int dim);
 
-    // Create the result matrix
-    arma::mat result(dim, total_points);
-
-    // Initialize the index vector
-    std::vector<size_t> index(dim, 0);
-
-    // Populate the result matrix
-    for (size_t i = 0; i < total_points; ++i) {
-        // Set the current point
-        for (size_t j = 0; j < dim; ++j) {
-            result(j, i) = lbs[j] + index[j];
-        }
-
-        // Update the index for the next point
-        for (size_t j = 0; j < dim; ++j) {
-            index[j]++;
-            if (index[j] < static_cast<size_t>(ubs[j] - lbs[j])) {
-                break;
-            }
-            index[j] = 0;
-        }
-    }
-
-    return result;
-}
+double distance(arma::vec p1, arma::vec p2);
 
 #endif
