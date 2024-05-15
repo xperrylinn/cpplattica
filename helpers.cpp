@@ -61,7 +61,8 @@ arma::mat get_points_in_cube(int lb, int ub, int dim) {
     std::cout << "get_points_in_cube(int lb, int ub, int dim)" << std::endl;
     std::vector<int> ubs(dim, ub);
     std::vector<int> lbs(dim, lb);
-    return get_points_in_box(lbs, ubs);
+    arma::mat result(get_points_in_box(lbs, ubs));
+    return result;
 }
 
 double distance(arma::vec p1, arma::vec p2) {

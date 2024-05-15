@@ -15,3 +15,7 @@ SimulationResult BasicController::instantiate_result(SimulationState starting_st
     SimulationResult result(starting_state);
     return result;
 }
+
+void BasicController::pre_run(SimulationState initial_state) {
+    std::cout << "BasicController::pre_run(SimulationState initial_state)" << std::endl;
+};

@@ -33,5 +33,4 @@ int main(int argc, char** argv) {
     SynchronousRunner runner;
     std::cout << "created SynchronousRunner" << std::endl;
     runner.run(starting_state.state, controller, 10);
-
 }

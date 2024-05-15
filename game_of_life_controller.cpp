@@ -3,10 +3,12 @@
 
 
 void GameOfLifeController::pre_run(SimulationState initial_state) {
+    std::cout << "GameOfLifeController::pre_run(SimulationState initial_state)" << std::endl;
     this->neighborhood = MooreNeighborhoodBuilder().get(this->structure);
 }
 
 int GameOfLifeController::get_state_update(int site_id, SimulationState prev_state) {
+    std::cout << "GameOfLifeController::get_state_update(int site_id, SimulationState prev_state)" << std::endl;
     int alive_neighbor_count = 0;
     int dead_neighbor_count = 0;
 
@@ -14,5 +16,6 @@ int GameOfLifeController::get_state_update(int site_id, SimulationState prev_sta
 }
 
 GameOfLifeController::GameOfLifeController(PeriodicStructure structure) {
+    std::cout << "GameOfLifeController::GameOfLifeController(PeriodicStructure structure)" << std::endl;
     this->structure = structure;
 }

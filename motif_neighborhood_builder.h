@@ -8,8 +8,10 @@
 class MotifNeighborhoodBuilder : public NeighborhoodBuilder {
     public:
         EuclideanDistanceMap distances;
+    
+        MotifNeighborhoodBuilder(arma::mat motif);
     protected:
-        arma::vec _motif;
+        arma::mat _motif;
         
 };
 

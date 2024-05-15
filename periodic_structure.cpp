@@ -37,7 +37,8 @@ PeriodicStructure PeriodicStructure::build_from(
     PeriodicStructure structure(new_lattice);
 
     std::vector<int> zero_vector(new_lattice.dim, 0);
-    arma::mat points = get_points_in_box(zero_vector, num_cells);
+    // arma::mat points = get_points_in_box(zero_vector, num_cells);
+    arma::mat points(get_points_in_box(zero_vector, num_cells));
 
     std::cout << "points" << std::endl;
     std::cout << points << std::endl;

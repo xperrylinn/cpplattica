@@ -12,7 +12,7 @@ class GameOfLifeController : public BasicController {
         Neighborhood neighborhood;
 
         int get_state_update(int site_id, SimulationState prev_state);
-        void pre_run(SimulationState initial_state) override;
+        void pre_run(SimulationState initial_state);
         GameOfLifeController(PeriodicStructure structure);
 };
 

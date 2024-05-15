@@ -12,10 +12,10 @@ std::unordered_map<std::string, double> DistanceMap::_find_distances(arma::mat r
         zero_vec.zeros();
         result[vec_to_string(loc)] = this->_distance(zero_vec, loc);
     }
-    return {};
+    return result;
 }
 
 double DistanceMap::_distance(arma::vec zero_vec, arma::vec loc) {
-    throw std::invalid_argument("Logic not for frac_coords==true");
+    std::cout << "DistanceMap::_distance(arma::vec zero_vec, arma::vec loc)" << std::endl;
     return 0.0;
 }
