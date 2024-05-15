@@ -133,3 +133,7 @@ int PeriodicStructure::add_site(const std::string& site_class, const arma::vec& 
 const std::vector<Site> PeriodicStructure::sites() const {
     return this->_sites;
 }
+
+const Site PeriodicStructure::get_site(int site_id) const {
+    return this->_sites[site_id];
+}

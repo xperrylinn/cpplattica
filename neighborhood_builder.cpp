@@ -39,18 +39,5 @@ Neighborhood NeighborhoodBuilder::get(PeriodicStructure structure, std::string s
         }
     }
 
-    // return Neighborhood(graph)
-
-    // return Neighborhood();
-}
-
-std::vector<int> NeighborhoodBuilder::get_neighbors(int site_id, PeriodicStructure structure) {
-    // location = curr_site[LOCATION]
-    // nbs = []
-    // for neighbor_vec in self._motif:
-    //     loc = tuple(s + n for s, n in zip(location, neighbor_vec))
-    //     nb_id = struct.id_at(loc)
-    //     if nb_id != curr_site[SITE_ID]:
-    //         nbs.append((nb_id, self.distances.get_dist(neighbor_vec)))
-    // return nbs
+    return Neighborhood(graph);
 }

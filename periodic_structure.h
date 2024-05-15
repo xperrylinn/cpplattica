@@ -34,6 +34,7 @@ class PeriodicStructure {
         int add_site(const std::string& site_class, const arma::vec& location);
         const std::vector<Site> sites() const;
         const std::vector<Site> sites(std::string site_class) const;
+        const Site get_site(int site_id) const;
 
         private:
             std::vector<Site> _sites;
