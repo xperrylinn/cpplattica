@@ -31,3 +31,7 @@ int Site::site_id() const {
     std::cout << "Site::site_id()" << std::endl;
     return this->_site_id;
 }
+
+const arma::vec Site::get_location() const {
+    return this->_location;
+}

@@ -137,3 +137,26 @@ const std::vector<Site> PeriodicStructure::sites() const {
 const Site PeriodicStructure::get_site(int site_id) const {
     return this->_sites[site_id];
 }
+
+const int PeriodicStructure::id_at(arma::vec location) const {
+    // site = self.site_at(location)
+    // if site is None:
+    //     return None
+    // else:
+    //     return site[SITE_ID]
+    Site site = this->site_at(location);
+    return site.site_id();
+}
+
+const Site PeriodicStructure::site_at(arma::vec location) const {
+    // _transformed_coords = tuple(self._transformed_coords(location))
+    arma::vec _transformed_coords = this->_transformed_coords(location);
+    // site_id = self._location_lookup.get(_transformed_coords)
+    int site_id = this->_location_lookup[location];
+
+    // if site_id is not None:
+    //     return self.get_site(site_id)
+    // else:
+    //     return None
+    return this->get_site(site_id);
+}

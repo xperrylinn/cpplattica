@@ -22,6 +22,7 @@ class Site {
 
         int site_id() const;
         void set_site_state(int state);
+        const arma::vec get_location() const;
 
     private:
         arma::vec _location;

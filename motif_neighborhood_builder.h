@@ -11,10 +11,9 @@ class MotifNeighborhoodBuilder : public NeighborhoodBuilder {
         EuclideanDistanceMap distances;
     
         MotifNeighborhoodBuilder(arma::mat motif);
-        std::vector<int> get_neighbors(int site_id, PeriodicStructure structure);
+        std::vector<int> get_neighbors(Site curr_site, PeriodicStructure structure) override;
     protected:
         arma::mat _motif;
-        
 };
 
 #endif
