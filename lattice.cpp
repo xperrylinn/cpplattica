@@ -4,13 +4,13 @@
 
 arma::vec periodize(const arma::vec& frac_coords, const arma::vec& periodic) {
     std::cout << "periodize(arma::vec frac_coords, arma::vec periodic)" << std::endl;
-    std::cout << "frac_coords" << std::endl;
-    std::cout << frac_coords << std::endl;
-    std::cout << "periodic" << std::endl;
-    std::cout << periodic << std::endl;
+    // std::cout << "frac_coords" << std::endl;
+    // std::cout << frac_coords << std::endl;
+    // std::cout << "periodic" << std::endl;
+    // std::cout << periodic << std::endl;
     arma::vec result = frac_coords - arma::floor(frac_coords) % periodic;
-    std::cout << "result" << std::endl;
-    std::cout << result << std::endl;
+    // std::cout << "result" << std::endl;
+    // std::cout << result << std::endl;
     return result;
 }
 
@@ -53,7 +53,7 @@ Lattice::Lattice(const std::vector<std::vector<double>>& vecs, bool periodic) {
 }
 
 Lattice::Lattice(const std::vector<std::vector<double>>& vecs, arma::vec periodic) {
-    std::cout << "HELLO Lattice(const std::vector<std::vector<double>>& vecs, std::vector<bool> periodic)" << std::endl;
+    std::cout << "Lattice(const std::vector<std::vector<double>>& vecs, std::vector<bool> periodic)" << std::endl;
     assert(!vecs.empty() && "Lattice vectors cannot be empty");
 
     this->vecs = vecs;
@@ -82,8 +82,8 @@ Lattice::Lattice(const std::vector<std::vector<double>>& vecs, arma::vec periodi
 }
 
 
-Lattice Lattice::get_scaled_lattice(const std::vector<int>& num_cells) {
-    std::cout << "Lattice::get_scaled_lattice(std::vector<int> num_cells)" << std::endl;
+Lattice Lattice::get_scaled_lattice(const std::vector<int>& num_cells) const {
+    std::cout << "Lattice::get_scaled_lattice(std::vector<int> num_cells) const" << std::endl;
     std::vector<std::tuple<int, std::vector<double>>> zipped_vecs = zip(num_cells, this->vecs);
     std::vector<std::vector<double>> scaled_lattice_vecs;
     for (const auto& pair : zipped_vecs) {
@@ -99,28 +99,26 @@ Lattice Lattice::get_scaled_lattice(const std::vector<int>& num_cells) {
     return lattice;
 }
 
-arma::vec Lattice::get_cartesian_coords(const arma::vec& fractional_coords) {
-    std::cout << "Lattice::get_cartesian_coords(const arma::vec& fractional_coords)" << std::endl;
-    // return arma::vec(arma::dot(fractional_coords, this->_matrix));
-    std::cout << "fractional_coords" << std::endl;
-    std::cout << fractional_coords << std::endl;
-    std::cout << "this->_inv_matrix" << std::endl;
-    std::cout << this->_inv_matrix << std::endl;
+arma::vec Lattice::get_cartesian_coords(const arma::vec& fractional_coords) const {
+    std::cout << "Lattice::get_cartesian_coords(const arma::vec& fractional_coords) const" << std::endl;
+    // std::cout << "fractional_coords" << std::endl;
+    // std::cout << fractional_coords << std::endl;
+    // std::cout << "this->_inv_matrix" << std::endl;
+    // std::cout << this->_inv_matrix << std::endl;
     return arma::vec(this->_inv_matrix * fractional_coords);
 }
 
-arma::vec Lattice::get_fractional_coords(const arma::vec& cart_coords) {
-    std::cout << "Lattice::get_fractional_coords(const arma::vec& cart_coords)" << std::endl;
-    // return arma::vec(arma::dot(cart_coords, this->_inv_matrix));
-    std::cout << "cart_coords" << std::endl;
-    std::cout << cart_coords << std::endl;
-    std::cout << "this->_inv_matrix" << std::endl;
-    std::cout << this->_inv_matrix << std::endl;
+arma::vec Lattice::get_fractional_coords(const arma::vec& cart_coords) const {
+    std::cout << "Lattice::get_fractional_coords(const arma::vec& cart_coords) const" << std::endl;
+    // std::cout << "cart_coords" << std::endl;
+    // std::cout << cart_coords << std::endl;
+    // std::cout << "this->_inv_matrix" << std::endl;
+    // std::cout << this->_inv_matrix << std::endl;
     return arma::vec(this->_inv_matrix * cart_coords);
 }
 
-arma::vec Lattice::get_periodized_cartesian_coords(const arma::vec& cart_coords) {
-    std::cout << "Lattice::get_periodized_cartesian_coords(const arma::vec& cart_coords)" << std::endl;
+arma::vec Lattice::get_periodized_cartesian_coords(const arma::vec& cart_coords) const {
+    std::cout << "Lattice::get_periodized_cartesian_coords(const arma::vec& cart_coords) const" << std::endl;
     arma::vec result = cart_coords;
     result = this->get_fractional_coords(result);
     return this->get_cartesian_coords(periodize(result, this->periodic));

@@ -21,10 +21,10 @@ class Lattice {
         Lattice(const std::vector<std::vector<double>>& vecs, bool periodic = true);
         Lattice(const std::vector<std::vector<double>>& vecs, arma::vec periodic);
 
-        arma::vec get_cartesian_coords(const arma::vec& fractional_coords);
-        Lattice get_scaled_lattice(const std::vector<int>& num_cells);
-        arma::vec get_periodized_cartesian_coords(const arma::vec& cart_coords);
-        arma::vec get_fractional_coords(const arma::vec& cart_coords);
+        arma::vec get_cartesian_coords(const arma::vec& fractional_coords) const;
+        Lattice get_scaled_lattice(const std::vector<int>& num_cells) const;
+        arma::vec get_periodized_cartesian_coords(const arma::vec& cart_coords) const;
+        arma::vec get_fractional_coords(const arma::vec& cart_coords) const;
         arma::mat get_matrix() const;
         arma::mat get_inverse_matrix() const;
     private:

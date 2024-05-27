@@ -28,9 +28,9 @@ class PeriodicStructure {
             std::unordered_map<std::string, arma::mat>& motif,
             const bool frac_coords = false
         );
-        arma::vec _get_rounded_coords(const arma::vec& location);
-        arma::vec _transformed_coords(const arma::vec& location);
-        arma::vec _coords_with_offset(const arma::vec& location);
+        arma::vec _get_rounded_coords(const arma::vec& location) const;
+        arma::vec _transformed_coords(const arma::vec& location) const;
+        arma::vec _coords_with_offset(const arma::vec& location) const;
         int add_site(const std::string& site_class, const arma::vec& location);
         const std::vector<Site> sites() const;
         const std::vector<Site> sites(std::string site_class) const;
