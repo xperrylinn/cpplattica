@@ -78,6 +78,7 @@
         "fstream": "cpp",
         "iomanip": "cpp",
         "memory_resource": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "span": "cpp"
     }
 }

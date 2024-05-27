@@ -25,7 +25,7 @@ Neighborhood NeighborhoodBuilder::get(PeriodicStructure structure, std::string s
     // for site in struct.sites():
     //     graph.add_node(site[SITE_ID])
     for (const auto& curr_site : structure.sites()) {
-        graph[curr_site.site_id()] = {};
+        graph[curr_site.get_site_id()] = {};
     }
 
     // for curr_site in tqdm(sites):

@@ -4,7 +4,7 @@
 
 void GameOfLifeController::pre_run(SimulationState initial_state) {
     std::cout << "GameOfLifeController::pre_run(SimulationState initial_state)" << std::endl;
-    this->neighborhood = MooreNeighborhoodBuilder().get(this->structure);
+    this->neighborhood = MooreNeighborhoodBuilder(1, 2).get(this->structure);
 }
 
 int GameOfLifeController::get_state_update(int site_id, SimulationState prev_state) {

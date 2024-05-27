@@ -9,7 +9,7 @@
 #include <algorithm>
 
 
-std::string vec_to_string(const arma::vec& vec);
+const std::string vec_to_string(const arma::vec& vec);
 
 template<typename T, typename U>
 std::vector<std::tuple<T, U>> zip(const std::vector<T>& vec1, const std::vector<U>& vec2) {
@@ -35,5 +35,9 @@ arma::mat get_points_in_box(const std::vector<int>& lbs, const std::vector<int>&
 arma::mat get_points_in_cube(int lb, int ub, int dim);
 
 double distance(arma::vec p1, arma::vec p2);
+
+std::vector<std::vector<int>> cartesian_product(const std::vector<std::vector<int>>& lists);
+
+arma::mat convert_to_arma_mat(const std::vector<std::vector<int>>& int_vec);
 
 #endif
