@@ -10,6 +10,14 @@ class Runner {
         Runner();
 
         SimulationResult run(SimulationState initial_state, BasicController controller, int num_steps);
+    private:
+        virtual SimulationResult _run(
+            SimulationState initial_state,
+            SimulationResult result,
+            SimulationState live_state,
+            BasicController controller,
+            int num_steps
+        );
 };
 
 #endif
