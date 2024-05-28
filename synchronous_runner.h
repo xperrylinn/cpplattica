@@ -20,6 +20,15 @@ class SynchronousRunner : public Runner {
             BasicController controller,
             int num_steps
         ) override;
+        SimulationResult _take_step(
+            SimulationState state,
+            BasicController controller
+        ) override;
+        SimulationResult _step_batch(
+            std::vector<int> id_batch,
+            SimulationState previous_state,
+            BasicController controller
+        ) override;
 };
 
 #endif
