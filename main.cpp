@@ -26,11 +26,11 @@ int main(int argc, char** argv) {
     int size = 4;
     DiscreteGridSetup setup = DiscreteGridSetup(phase_set);
     std::cout << "created DiscreteGridSetup" << std::endl;
-    Simulation starting_state = setup.setup_noise(phase_set, size);
+    Simulation gol_simulation = setup.setup_noise(phase_set, size);
     std::cout << "created Simulation" << std::endl;
-    GameOfLifeController controller(starting_state.structure);
+    GameOfLifeController controller(gol_simulation.structure);
     std::cout << "created GameOfLifeController" << std::endl;
     SynchronousRunner runner;
     std::cout << "created SynchronousRunner" << std::endl;
-    runner.run(starting_state.state, controller, 10);
+    runner.run(gol_simulation.state, controller, 10);
 }

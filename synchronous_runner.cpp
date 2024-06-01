@@ -7,10 +7,10 @@
 SynchronousRunner::SynchronousRunner() {}
 
 SimulationResult SynchronousRunner::_run(
-    SimulationState initial_state,
-    SimulationResult result,
-    SimulationState live_state,
-    BasicController controller,
+    SimulationState& initial_state,
+    SimulationResult& result,
+    SimulationState& live_state,
+    BasicController& controller,
     int num_steps
 ) {
     std::cout << "SynchronousRunner::_run(SimulationState initial_state, SimulationResult result, SimulationState live_state, BasicController controller, int num_steps)" << std::endl;
@@ -21,7 +21,7 @@ SimulationResult SynchronousRunner::_run(
     return SimulationResult();
 }
 
-SimulationResult SynchronousRunner::run(SimulationState initial_state, GameOfLifeController controller, int num_steps) {
+SimulationResult SynchronousRunner::run(SimulationState& initial_state, BasicController& controller, int num_steps) {
     std::cout << "SynchronousRunner::run(SimulationState initial_state, BasicController controller, int num_steps)" << std::endl;
     SimulationResult result = controller.instantiate_result(initial_state);
     controller.pre_run(initial_state);
@@ -34,20 +34,26 @@ SimulationResult SynchronousRunner::run(SimulationState initial_state, GameOfLif
 }
 
 SimulationResult SynchronousRunner::_take_step(
-    SimulationState state,
-    BasicController controller
+    SimulationState& state,
+    BasicController& controller
 ) {
     std::cout << "_take_step(SimulationState state, BasicController controller)" << std::endl;
     std::vector<int> site_ids = state.get_site_ids();
+    std::vector<int> updated_sites(this->_step_batch(site_ids, state, controller));
     SimulationResult result;
     return result;
 }
 
-SimulationResult SynchronousRunner::_step_batch(
-    std::vector<int> id_batch,
-    SimulationState previous_state,
-    BasicController controller
+std::vector<int> SynchronousRunner::_step_batch(
+    std::vector<int>& id_batch,
+    SimulationState& previous_state,
+    BasicController& controller
 ) {
-    
-    return SimulationResult();
+    std::cout << "SynchronousRunner::_step_batch(std::vector<int> id_batch, SimulationState previous_state, BasicController controller)" << std::endl;
+    std::vector<int> updated_states;
+    for (const auto& site_id : id_batch) {
+        int updated_state = controller.get_state_update(site_id, previous_state);
+        updated_states.push_back(updated_state);
+    }
+    return updated_states;
 }

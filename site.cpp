@@ -27,6 +27,11 @@ void Site::set_site_state(int state) {
     this->_state = state;
 }
 
+const int Site::get_site_state() const {
+    std::cout << "Site::get_site_state() const" << std::endl;
+    return this->_state;
+}
+
 const int Site::get_site_id() const {
     std::cout << "Site::get_site_id() const" << std::endl;
     return this->_site_id;

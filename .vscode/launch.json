@@ -8,7 +8,7 @@
             "program": "/Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/build/mpi",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "lldb"

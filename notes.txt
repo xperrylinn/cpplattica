@@ -1,11 +1,9 @@
 breakpoint set --file /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/main.cpp --line 21
 
+current problem: in creating the random initial state the
+ids are not getting updated from -1
 
-
-
-
-NeighborhoodBuilder.get() --> constructs graph from NeighborhoodBuilder.get_neighborhors()
-
-NeighborhoodBuilder.get_neighbors() --> given a site and a periodic structure
-uses motif vectors to grab adjacent sites
+does simulation state need an unordered_map<int, Site> or can it just be unordered_map<int, int>
+since the PeriodicStructure object is the one that is keeping track of the full Site info such as
+location, ect...
 

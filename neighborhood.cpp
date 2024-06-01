@@ -19,6 +19,6 @@ Neighborhood& Neighborhood::operator=(const Neighborhood& other) {
     return *this;
 }
 
-const std::unordered_map<int, std::vector<int>>& Neighborhood::get_graph() {
+const std::unordered_map<int, std::vector<int>>& Neighborhood::get_graph() const {
     return this->_graph;
 }

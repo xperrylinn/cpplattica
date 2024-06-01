@@ -11,7 +11,7 @@ class Neighborhood {
         Neighborhood(std::unordered_map<int, std::vector<int>> graph);
         Neighborhood(const Neighborhood& other);
         Neighborhood& operator=(const Neighborhood& other);
-        const std::unordered_map<int, std::vector<int>>& get_graph();
+        const std::unordered_map<int, std::vector<int>>& get_graph() const;
 
     private:
         std::unordered_map<int, std::vector<int>> _graph;

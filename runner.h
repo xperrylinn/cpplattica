@@ -9,23 +9,23 @@ class Runner {
     public:
         Runner();
 
-        SimulationResult run(SimulationState initial_state, BasicController controller, int num_steps);
+        SimulationResult run(SimulationState& initial_state, BasicController& controller, int num_steps);
     private:
         virtual SimulationResult _run(
-            SimulationState initial_state,
-            SimulationResult result,
-            SimulationState live_state,
-            BasicController controller,
+            SimulationState& initial_state,
+            SimulationResult& result,
+            SimulationState& live_state,
+            BasicController& controller,
             int num_steps
         );
         virtual SimulationResult _take_step(
-            SimulationState state,
-            BasicController controller
+            SimulationState& state,
+            BasicController& controller
         );
-        virtual SimulationResult _step_batch(
-            std::vector<int> id_batch,
-            SimulationState previous_state,
-            BasicController controller
+        virtual std::vector<int> _step_batch(
+            std::vector<int>& id_batch,
+            SimulationState& previous_state,
+            BasicController& controller
         );
 };
 

@@ -11,9 +11,9 @@ class GameOfLifeController : public BasicController {
         PeriodicStructure structure;
         Neighborhood neighborhood;
 
-        int get_state_update(int site_id, SimulationState prev_state);
         void pre_run(SimulationState initial_state) override;
         GameOfLifeController(PeriodicStructure structure);
+        const int get_state_update(int site_id, SimulationState curr_state) const override;
 };
 
 #endif

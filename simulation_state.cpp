@@ -8,7 +8,8 @@ SimulationState::SimulationState() {
 }
 
 void SimulationState::set_site_state(int site_id, int state) {
-    this->_sites[site_id].set_site_state(state);
+    std::cout << "SimulationState::set_site_state(int site_id, int state)" << std::endl;
+    this->_sites[site_id] = state;
 }
 
 const int SimulationState::num_sites() const {
@@ -22,4 +23,8 @@ const std::vector<int> SimulationState::get_site_ids() const {
         site_ids.push_back(pair.first);
     }
     return site_ids;
+}
+
+const int SimulationState::get_site_state(int site_id) const {
+    return this->_sites.at(site_id);
 }

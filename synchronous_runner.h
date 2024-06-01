@@ -11,23 +11,23 @@ class SynchronousRunner : public Runner {
     public:
         SynchronousRunner();
 
-        SimulationResult run(SimulationState initial_state, GameOfLifeController controller, int num_steps);
+        SimulationResult run(SimulationState& initial_state, BasicController& controller, int num_steps);
     private:
         virtual SimulationResult _run(
-            SimulationState initial_state,
-            SimulationResult result,
-            SimulationState live_state,
-            BasicController controller,
+            SimulationState& initial_state,
+            SimulationResult& result,
+            SimulationState& live_state,
+            BasicController& controller,
             int num_steps
         ) override;
         SimulationResult _take_step(
-            SimulationState state,
-            BasicController controller
+            SimulationState& state,
+            BasicController& controller
         ) override;
-        SimulationResult _step_batch(
-            std::vector<int> id_batch,
-            SimulationState previous_state,
-            BasicController controller
+        std::vector<int> _step_batch(
+            std::vector<int>& id_batch,
+            SimulationState& previous_state,
+            BasicController& controller
         ) override;
 };
 
