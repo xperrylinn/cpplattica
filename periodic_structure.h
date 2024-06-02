@@ -1,6 +1,7 @@
 #ifndef PERIODIC_STRUCTURE_H
 #define PERIODIC_STRUCTURE_H
 
+#include <string>
 #include <vector>
 #include <cassert>
 #include <cmath>
@@ -35,8 +36,10 @@ class PeriodicStructure {
         const std::vector<Site> sites() const;
         const std::vector<Site> sites(std::string site_class) const;
         const Site get_site(int site_id) const;
+        const int get_num_sites() const;
         const int id_at(arma::vec location) const;
         const Site site_at(arma::vec location) const;
+        const std::string to_json() const;
 
         private:
             std::vector<Site> _sites;

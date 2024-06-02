@@ -9,7 +9,13 @@
 #include <algorithm>
 
 
-const std::string vec_to_string(const arma::vec& vec);
+const std::string vec_to_hash_string(const arma::vec& vec);
+
+const std::string vec_to_json_string(const arma::vec& vec);
+
+std::string vecs_to_json_string(const std::vector<std::vector<double>>& vecs);
+
+void write_string_to_file(const std::string& filename, const std::string& content);
 
 template<typename T, typename U>
 std::vector<std::tuple<T, U>> zip(const std::vector<T>& vec1, const std::vector<U>& vec2) {

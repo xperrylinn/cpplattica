@@ -1,5 +1,6 @@
 #include <armadillo>
 #include <tuple>
+#include <sstream>
 #include "periodic_structure.h"
 #include "lattice.h"
 #include "periodic_structure.h"
@@ -130,7 +131,7 @@ int PeriodicStructure::add_site(const std::string& site_class, const arma::vec& 
         -1
     );
     this->_sites.push_back(new_site);
-    std::string vec_string = vec_to_string(offset_periodized_coords);
+    std::string vec_string = vec_to_hash_string(offset_periodized_coords);
     this->_location_lookup[vec_string] = new_site_id;
     this->site_ids.push_back(new_site_id);
 
@@ -145,6 +146,10 @@ const std::vector<Site> PeriodicStructure::sites() const {
 const Site PeriodicStructure::get_site(int site_id) const {
     std::cout << "PeriodicStructure::get_site(int site_id) const" << std::endl;
     return this->_sites[site_id];
+}
+
+const int PeriodicStructure::get_num_sites() const {
+    return this->_sites.size();
 }
 
 const int PeriodicStructure::id_at(arma::vec location) const {
@@ -163,7 +168,7 @@ const Site PeriodicStructure::site_at(arma::vec location) const {
     // _transformed_coords = tuple(self._transformed_coords(location))
     arma::vec _transformed_coords = this->_transformed_coords(location);
     // site_id = self._location_lookup.get(_transformed_coords)
-    std::string location_at_string = vec_to_string(_transformed_coords);
+    std::string location_at_string = vec_to_hash_string(_transformed_coords);
     int site_id = this->_location_lookup.at(location_at_string);
 
     // if site_id is not None:
@@ -171,4 +176,24 @@ const Site PeriodicStructure::site_at(arma::vec location) const {
     // else:
     //     return None
     return this->get_site(site_id);
+}
+
+const std::string PeriodicStructure::to_json() const {
+    std::cout << "PeriodicStructure::to_json()" << std::endl;
+
+    std::ostringstream _sites_val;
+    _sites_val << " {";
+    for (int i = 0; i < this->get_num_sites(); i += 1) {
+        _sites_val << "\"" << i << "\": ";
+        Site site = this->_sites[i];
+        _sites_val << site.to_json();
+        if (i < this->get_num_sites() - 1) {
+            _sites_val << ", ";
+        }
+    }
+    _sites_val << "}";
+
+    std::ostringstream result;
+    result << "{\"lattice\": " << this->lattice.to_json() << ", \"_sites\": " << _sites_val.str() << "}";
+    return result.str();
 }

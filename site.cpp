@@ -1,4 +1,5 @@
 #include "site.h"
+#include "helpers.h"
 
 
 Site::Site() {
@@ -40,3 +41,17 @@ const int Site::get_site_id() const {
 const arma::vec Site::get_location() const {
     return this->_location;
 }
+
+const std::string Site::get_site_class() const {
+    return this->_site_class;
+}
+
+const std::string Site::to_json() const {
+        std::ostringstream oss;
+        oss << "{";
+        oss << "\"_location\": " << vec_to_json_string(_location) << ", ";
+        oss << "\"_site_class\": \"" << _site_class << "\", ";
+        oss << "\"_site_id\": " << _site_id;
+        oss << "}";
+        return oss.str();
+}    

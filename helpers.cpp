@@ -9,8 +9,8 @@
 #include "helpers.h"
 
 
-const std::string vec_to_string(const arma::vec& vec) {
-    std::cout << "vec_to_string(const arma::vec& vec)" << std::endl;
+const std::string vec_to_hash_string(const arma::vec& vec) {
+    std::cout << "vec_to_hash_string(const arma::vec& vec)" << std::endl;
 
     std::ostringstream oss;
     for (arma::uword i = 0; i < vec.n_elem; ++i) {
@@ -20,6 +20,43 @@ const std::string vec_to_string(const arma::vec& vec) {
         oss << vec(i);
     }
     
+    return oss.str();
+}
+
+const std::string vec_to_json_string(const arma::vec& vec) {
+    std::ostringstream oss;
+    oss << "[";
+
+    for (size_t i = 0; i < vec.n_elem; ++i) {
+        oss << vec(i);
+        if (i < vec.n_elem - 1) {
+            oss << ", ";
+        }
+    }
+
+    oss << "]";
+    return oss.str();
+}
+
+std::string vecs_to_json_string(const std::vector<std::vector<double>>& vecs) {
+    std::ostringstream oss;
+    oss << "[";
+
+    for (size_t i = 0; i < vecs.size(); ++i) {
+        oss << "[";
+        for (size_t j = 0; j < vecs[i].size(); ++j) {
+            oss << vecs[i][j];
+            if (j < vecs[i].size() - 1) {
+                oss << ", ";
+            }
+        }
+        oss << "]";
+        if (i < vecs.size() - 1) {
+            oss << ", ";
+        }
+    }
+
+    oss << "]";
     return oss.str();
 }
 
@@ -100,4 +137,23 @@ arma::mat convert_to_arma_mat(const std::vector<std::vector<int>>& int_vec) {
     }
 
     return result;
+}
+
+void write_string_to_file(const std::string& filename, const std::string& content) {
+    std::ofstream outfile(filename);
+
+    if (!outfile) {
+        std::cerr << "Error: Could not open file " << filename << " for writing." << std::endl;
+        return;
+    }
+
+    outfile << content;
+
+    outfile.close();
+
+    if (!outfile.fail()) {
+        std::cout << "File " << filename << " written successfully." << std::endl;
+    } else {
+        std::cerr << "Error: Could not write to file " << filename << "." << std::endl;
+    }
 }

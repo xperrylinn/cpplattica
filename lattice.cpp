@@ -131,3 +131,12 @@ arma::mat Lattice::get_matrix() const {
 arma::mat Lattice::get_inverse_matrix() const {
     return this->_inv_matrix;
 }
+
+const std::string Lattice::to_json() const {
+    std::ostringstream oss;
+    oss << "{";
+    oss << "\"vectors\": " << vecs_to_json_string(vecs) << ", ";
+    oss << "\"periodic\": " << vec_to_json_string(periodic);
+    oss << "}";
+    return oss.str();
+}

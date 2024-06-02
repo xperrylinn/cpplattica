@@ -2,6 +2,7 @@
 #define LATTICE_H
 
 // #include <Eigen/Dense>
+#include <string>
 #include <vector>
 #include <cassert>
 #include <cmath>
@@ -27,6 +28,8 @@ class Lattice {
         arma::vec get_fractional_coords(const arma::vec& cart_coords) const;
         arma::mat get_matrix() const;
         arma::mat get_inverse_matrix() const;
+        const std::string to_json() const;
+
     private:
         
         std::vector<bool> _periodic_bool;

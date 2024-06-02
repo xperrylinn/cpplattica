@@ -10,7 +10,7 @@ std::unordered_map<std::string, double> DistanceMap::_find_distances(arma::mat r
         arma::vec loc = relative_neighbor_locs.col(i);
         arma::vec zero_vec;
         zero_vec.zeros();
-        result[vec_to_string(loc)] = this->_distance(zero_vec, loc);
+        result[vec_to_hash_string(loc)] = this->_distance(zero_vec, loc);
     }
     return result;
 }
