@@ -10,7 +10,7 @@
 
 
 const std::string vec_to_hash_string(const arma::vec& vec) {
-    std::cout << "vec_to_hash_string(const arma::vec& vec)" << std::endl;
+    // std::cout << "vec_to_hash_string(const arma::vec& vec)" << std::endl;
 
     std::ostringstream oss;
     for (arma::uword i = 0; i < vec.n_elem; ++i) {
@@ -61,7 +61,7 @@ std::string vecs_to_json_string(const std::vector<std::vector<double>>& vecs) {
 }
 
 arma::mat get_points_in_box(const std::vector<int>& lbs, const std::vector<int>& ubs) {
-    std::cout << "get_points_in_box(const std::vector<int>& lbs, const std::vector<int>& ubs)" << std::endl;
+    // std::cout << "get_points_in_box(const std::vector<int>& lbs, const std::vector<int>& ubs)" << std::endl;
 
     // std::vector<int> x(10);
     // std::iota(std::begin(x), std::end(x), 0); //0 is the starting number
@@ -82,7 +82,7 @@ arma::mat get_points_in_box(const std::vector<int>& lbs, const std::vector<int>&
 }
 
 arma::mat get_points_in_cube(int lb, int ub, int dim) {
-    std::cout << "get_points_in_cube(int lb, int ub, int dim)" << std::endl;
+    // std::cout << "get_points_in_cube(int lb, int ub, int dim)" << std::endl;
     std::vector<int> ubs(dim, ub);
     std::vector<int> lbs(dim, lb);
     arma::mat result(get_points_in_box(lbs, ubs));
@@ -90,13 +90,13 @@ arma::mat get_points_in_cube(int lb, int ub, int dim) {
 }
 
 double distance(arma::vec p1, arma::vec p2) {
-    std::cout << "distance(arma::vec p1, arma::vec p2)" << std::endl;
+    // std::cout << "distance(arma::vec p1, arma::vec p2)" << std::endl;
     double result = arma::norm(p1 - p2);
     return result;
 }
 
 std::vector<std::vector<int>> cartesian_product(const std::vector<std::vector<int>>& lists) {
-    std::cout << "cartesian_product(const std::vector<std::vector<int>>& lists)" << std::endl;
+    // std::cout << "cartesian_product(const std::vector<std::vector<int>>& lists)" << std::endl;
     // Initialize the result with an empty product
     std::vector<std::vector<int>> result = {{}};
 
@@ -152,7 +152,7 @@ void write_string_to_file(const std::string& filename, const std::string& conten
     outfile.close();
 
     if (!outfile.fail()) {
-        std::cout << "File " << filename << " written successfully." << std::endl;
+        // std::cout << "File " << filename << " written successfully." << std::endl;
     } else {
         std::cerr << "Error: Could not write to file " << filename << "." << std::endl;
     }

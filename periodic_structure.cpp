@@ -33,48 +33,27 @@ PeriodicStructure PeriodicStructure::build_from(
             std::unordered_map<std::string, arma::mat>& motif,
             const bool frac_coords
 ) {
-    std::cout << "PeriodicStructure::build_from(Lattice lattice, std::vector<int> num_cells, std::unordered_map<std::string, arma::mat>& motif, const bool frac_coords)" << std::endl;
+    // // std::cout << "PeriodicStructure::build_from(Lattice lattice, std::vector<int> num_cells, std::unordered_map<std::string, arma::mat>& motif, const bool frac_coords)" << std::endl;
     Lattice new_lattice = lattice.get_scaled_lattice(num_cells);
     PeriodicStructure structure(new_lattice);
 
     std::vector<int> zero_vector(new_lattice.dim, 0);
     arma::mat points(get_points_in_box(zero_vector, num_cells));
 
-    // std::cout << "points" << std::endl;
-    // std::cout << points << std::endl;
     if (!frac_coords) {
         points = lattice.get_matrix() * points.t();
     }
 
-    // std::cout << "lattice.mat" << std::endl;
-    // std::cout << lattice.get_matrix() << std::endl;
-
-    // std::cout << "points" << std::endl;
-    // std::cout << points << std::endl;
-
     for (int i = 0; i < points.n_cols; i += 1) {
         arma::vec point = points.col(i);
-
-        // std::cout << "point" << std::endl;
-        // std::cout << point << std::endl;
 
         for (const auto& pair : motif) {
             std::string site_class = pair.first;
             arma::mat basis_vecs = pair.second;
 
-            // std::cout << "basis_vecs" << std::endl;
-            // std::cout << basis_vecs << std::endl;
-
             for (int i = 0; i < basis_vecs.n_rows; i += 1) {
                 arma::vec basis_vec = basis_vecs.row(i).t();
-                
-                // std::cout << "basis_vec" << std::endl;
-                // std::cout << basis_vec << std::endl;
-                
                 arma::mat site_loc = point + basis_vec;
-                
-                // std::cout << "site_loc" << std::endl;
-                // std::cout << site_loc << std::endl;
 
                 if (frac_coords) {
                     throw std::invalid_argument("Logic not for frac_coords==true");
@@ -89,29 +68,26 @@ PeriodicStructure PeriodicStructure::build_from(
 }
 
 arma::vec PeriodicStructure::_coords_with_offset(const arma::vec& location) const {
-    std::cout << "PeriodicStructure::_coords_with_offset(const arma::vec& location)" << std::endl;
+    // std::cout << "PeriodicStructure::_coords_with_offset(const arma::vec& location)" << std::endl;
     return this->_get_rounded_coords(location + this->_offset_vector);
 }
 
 arma::vec PeriodicStructure::_get_rounded_coords(const arma::vec& location) const {
-    std::cout << "PeriodicStructure::_get_rounded_coords(const arma::vec& location)" << std::endl;
+    // std::cout << "PeriodicStructure::_get_rounded_coords(const arma::vec& location)" << std::endl;
     double scale = std::pow(10.0, OFFSET_PRECISION);
     arma::vec rounded_coords = arma::round(location * scale) / scale;
-    // std::cout << "rounded_coords\n" << rounded_coords << std::endl;
     return rounded_coords;
 }
 
 arma::vec PeriodicStructure::_transformed_coords(const arma::vec& location) const {
-    std::cout << "PeriodicStructure::_transformed_coords(const arma::vec& location)" << std::endl;
+    // std::cout << "PeriodicStructure::_transformed_coords(const arma::vec& location)" << std::endl;
     arma::vec periodized_coords = this->lattice.get_periodized_cartesian_coords(location);
-    // std::cout << "this->lattice.get_periodized_cartesian_coords(location)\n" << this->lattice.get_periodized_cartesian_coords(location) << std::endl;
     arma::vec offset_periodized_coords = this->_coords_with_offset(periodized_coords);
-    // std::cout << "this->_coords_with_offset(periodized_coords)\n" << this->_coords_with_offset(periodized_coords) << std::endl;
     return offset_periodized_coords;
 }
 
 int PeriodicStructure::add_site(const std::string& site_class, const arma::vec& location) {
-    std::cout << "PeriodicStructure::add_site(const std::string& site_class, const arma::vec& location)" << std::endl;
+    // std::cout << "PeriodicStructure::add_site(const std::string& site_class, const arma::vec& location)" << std::endl;
     int new_site_id = this->_sites.size();
     
     arma::vec periodized_coords = _get_rounded_coords(
@@ -139,12 +115,12 @@ int PeriodicStructure::add_site(const std::string& site_class, const arma::vec& 
 }
 
 const std::vector<Site> PeriodicStructure::sites() const {
-    std::cout << "PeriodicStructure::sites() const" << std::endl;
+    // std::cout << "PeriodicStructure::sites() const" << std::endl;
     return this->_sites;
 }
 
 const Site PeriodicStructure::get_site(int site_id) const {
-    std::cout << "PeriodicStructure::get_site(int site_id) const" << std::endl;
+    // std::cout << "PeriodicStructure::get_site(int site_id) const" << std::endl;
     return this->_sites[site_id];
 }
 
@@ -153,7 +129,7 @@ const int PeriodicStructure::get_num_sites() const {
 }
 
 const int PeriodicStructure::id_at(arma::vec location) const {
-    std::cout << "PeriodicStructure::id_at(arma::vec location) const" << std::endl;
+    // std::cout << "PeriodicStructure::id_at(arma::vec location) const" << std::endl;
     // site = self.site_at(location)
     // if site is None:
     //     return None
@@ -164,22 +140,15 @@ const int PeriodicStructure::id_at(arma::vec location) const {
 }
 
 const Site PeriodicStructure::site_at(arma::vec location) const {
-    std::cout << "PeriodicStructure::site_at(arma::vec location) const" << std::endl;
-    // _transformed_coords = tuple(self._transformed_coords(location))
+    // std::cout << "PeriodicStructure::site_at(arma::vec location) const" << std::endl;
     arma::vec _transformed_coords = this->_transformed_coords(location);
-    // site_id = self._location_lookup.get(_transformed_coords)
     std::string location_at_string = vec_to_hash_string(_transformed_coords);
     int site_id = this->_location_lookup.at(location_at_string);
-
-    // if site_id is not None:
-    //     return self.get_site(site_id)
-    // else:
-    //     return None
     return this->get_site(site_id);
 }
 
 const std::string PeriodicStructure::to_json() const {
-    std::cout << "PeriodicStructure::to_json()" << std::endl;
+    // std::cout << "PeriodicStructure::to_json()" << std::endl;
 
     std::ostringstream _sites_val;
     _sites_val << " {";

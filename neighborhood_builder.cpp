@@ -6,7 +6,7 @@
 
 
 Neighborhood NeighborhoodBuilder::get(PeriodicStructure structure, std::string site_class) {
-    std::cout << "NeighborhoodBuilder::get(PeriodicStructure structure, std::string site_class)" << std::endl;
+    // // std::cout << "NeighborhoodBuilder::get(PeriodicStructure structure, std::string site_class)" << std::endl;
     
     std::unordered_map<int, std::vector<int>> graph;
 
@@ -32,6 +32,6 @@ Neighborhood NeighborhoodBuilder::get(PeriodicStructure structure, std::string s
 }
 
 std::vector<int> NeighborhoodBuilder::get_neighbors(Site curr_site, PeriodicStructure structure) {
-    std::cout << "NeighborhoodBuilder::get_neighbors(int site_id, PeriodicStructure structure)" << std::endl;
+    // // std::cout << "NeighborhoodBuilder::get_neighbors(int site_id, PeriodicStructure structure)" << std::endl;
     return {};
 }
