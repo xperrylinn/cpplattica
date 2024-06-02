@@ -1,5 +1,0 @@
-breakpoint set --file /Users/xavi/Documents/grad_school/CS267/final_project/cpplattica/main.cpp --line 21
-
-current problems: 
-- finish implementing the end-to-end profile_gol.py script (all logic through the return statement of synchronous_runner.cpp)
-- write to JSON methods for the necessary classes to be able to visualize the simulation
