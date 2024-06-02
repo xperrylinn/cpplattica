@@ -30,5 +30,14 @@ const int GameOfLifeController::get_state_update(int site_id, SimulationState cu
         }
     }
 
-    return -99;
+    int current_site_state = curr_state.get_site_state(site_id);
+
+    int new_state;
+    if (current_site_state == 1 && (alive_neighbor_count == 2 || alive_neighbor_count == 3)) {
+        new_state = 1;
+    } else if (current_site_state == 0 && alive_neighbor_count == 3) {
+        new_state = 0;
+    }
+    
+    return new_state;
 }

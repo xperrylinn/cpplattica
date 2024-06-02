@@ -23,15 +23,14 @@ SimulationResult Runner::_run(
     return SimulationResult();
 }
 
-SimulationResult Runner::_take_step(
+std::unordered_map<int, int> Runner::_take_step(
     SimulationState& state,
     BasicController& controller
 ) {
-    std::vector<int> site_ids = state.get_site_ids();
-    return SimulationResult();
+    return {};
 }
 
-std::vector<int> Runner::_step_batch(
+std::unordered_map<int, int> Runner::_step_batch(
     std::vector<int>& id_batch,
     SimulationState& previous_state,
     BasicController& controller
