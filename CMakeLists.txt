@@ -19,57 +19,63 @@ if (NOT "${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
             "module swap ${Prg-${CMAKE_C_COMPILER_ID}} PrgEnv-gnu")
 endif ()
 
-add_executable(
-    mpi 
-    main.cpp
-    constants.h
-    helpers.h
-    helpers.cpp
-    phases_set.h 
-    phases_set.cpp 
-    lattice.h 
-    lattice.cpp 
-    square_grid_lattice_2d.h 
-    square_grid_lattice_2d.cpp 
-    structure_builder.h 
-    structure_builder.cpp 
-    simple_sqaure_2d_structure_builder.h  
-    simple_sqaure_2d_structure_builder.cpp
-    discrete_grid_setup.h
-    discrete_grid_setup.cpp
-    simulation.h
-    simulation.cpp
-    periodic_structure.h
-    periodic_structure.cpp
-    simulation_state.h
-    simulation_state.cpp
-    simulation_result.cpp
-    simulation_result.h
-    site.h
-    site.cpp
-    basic_controller.h
-    basic_controller.cpp
-    game_of_life_controller.h
-    game_of_life_controller.cpp
-    neighborhood_builder.h
-    neighborhood_builder.cpp
-    motif_neighborhood_builder.h
-    motif_neighborhood_builder.cpp
-    moore_neighborhood_builder.h
-    moore_neighborhood_builder.cpp
-    neighborhood.h
-    neighborhood.cpp
-    distance_map.h
-    distance_map.cpp
-    euclidean_distance_map.h
-    euclidean_distance_map.cpp
-    synchronous_runner.h
-    synchronous_runner.cpp
-    runner.h
-    runner.cpp
+# Set the source directory
+set(SRC_DIR src)
+
+# List of source files
+set(SOURCES
+    ${SRC_DIR}/main.cpp
+    ${SRC_DIR}/constants.h
+    ${SRC_DIR}/helpers.h
+    ${SRC_DIR}/helpers.cpp
+    ${SRC_DIR}/phases_set.h 
+    ${SRC_DIR}/phases_set.cpp 
+    ${SRC_DIR}/lattice.h 
+    ${SRC_DIR}/lattice.cpp 
+    ${SRC_DIR}/square_grid_lattice_2d.h 
+    ${SRC_DIR}/square_grid_lattice_2d.cpp 
+    ${SRC_DIR}/structure_builder.h 
+    ${SRC_DIR}/structure_builder.cpp 
+    ${SRC_DIR}/simple_sqaure_2d_structure_builder.h  
+    ${SRC_DIR}/simple_sqaure_2d_structure_builder.cpp
+    ${SRC_DIR}/discrete_grid_setup.h
+    ${SRC_DIR}/discrete_grid_setup.cpp
+    ${SRC_DIR}/simulation.h
+    ${SRC_DIR}/simulation.cpp
+    ${SRC_DIR}/periodic_structure.h
+    ${SRC_DIR}/periodic_structure.cpp
+    ${SRC_DIR}/simulation_state.h
+    ${SRC_DIR}/simulation_state.cpp
+    ${SRC_DIR}/simulation_result.cpp
+    ${SRC_DIR}/simulation_result.h
+    ${SRC_DIR}/site.h
+    ${SRC_DIR}/site.cpp
+    ${SRC_DIR}/basic_controller.h
+    ${SRC_DIR}/basic_controller.cpp
+    ${SRC_DIR}/game_of_life_controller.h
+    ${SRC_DIR}/game_of_life_controller.cpp
+    ${SRC_DIR}/neighborhood_builder.h
+    ${SRC_DIR}/neighborhood_builder.cpp
+    ${SRC_DIR}/motif_neighborhood_builder.h
+    ${SRC_DIR}/motif_neighborhood_builder.cpp
+    ${SRC_DIR}/moore_neighborhood_builder.h
+    ${SRC_DIR}/moore_neighborhood_builder.cpp
+    ${SRC_DIR}/neighborhood.h
+    ${SRC_DIR}/neighborhood.cpp
+    ${SRC_DIR}/distance_map.h
+    ${SRC_DIR}/distance_map.cpp
+    ${SRC_DIR}/euclidean_distance_map.h
+    ${SRC_DIR}/euclidean_distance_map.cpp
+    ${SRC_DIR}/synchronous_runner.h
+    ${SRC_DIR}/synchronous_runner.cpp
+    ${SRC_DIR}/runner.h
+    ${SRC_DIR}/runner.cpp
 )
+
+# Add the executable
+add_executable(mpi ${SOURCES})
 
 target_link_libraries(mpi PRIVATE MPI::MPI_CXX ${ARMADILLO_LIBRARIES})
 
 # Copy the job scripts
-configure_file(job-mpi job-mpi COPYONLY)
+# configure_file(job-mpi job-mpi COPYONLY)

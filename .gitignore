@@ -33,3 +33,5 @@
 
 build/
 cmake-build-*/
+.DS_Store
+notes.txt
