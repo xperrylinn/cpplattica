@@ -62,6 +62,13 @@ First make sure the CMake module is loaded:
 > module load cmake
 ```
 
+If the armadillo dependency is not installed download the tar from the [website](https://arma.sourceforge.net/download.html) and untar. 
+Change directory the resulting library. Follow the cmake installation instructions in the README. Make sure the library is in the include path. For example,
+
+```
+> export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/global/homes/x/xlinn/armadillo-12.8.4
+```
+
 Next step is to build the code. We'll follow a CMake tree build:
 
 ```
