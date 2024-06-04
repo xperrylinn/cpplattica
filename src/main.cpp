@@ -18,12 +18,14 @@
 
 
 int main(int argc, char** argv) {
-
+    // Start timer
+    TimePoint startTime = start_timer();
     // Test DiscreteGridSetup
     std::vector<std::string> phases = {"alive", "dead"};    
     PhaseSet phase_set = PhaseSet(phases);
     // std::cout << "created PhaseSet" << std::endl;
-    int size = 5;
+    int size = 100;
+    int steps = 100;
     DiscreteGridSetup setup = DiscreteGridSetup(phase_set);
     // std::cout << "created DiscreteGridSetup" << std::endl;
     Simulation gol_simulation = setup.setup_noise(phase_set, size);
@@ -32,7 +34,10 @@ int main(int argc, char** argv) {
     // std::cout << "created GameOfLifeController" << std::endl;
     SynchronousRunner runner;
     // std::cout << "created SynchronousRunner" << std::endl;
-    runner.run(gol_simulation.state, controller, 10);
+    SimulationResult result = runner.run(gol_simulation.state, controller, steps);
+    // Stop timer
+    double elapsed_time = stop_timer(startTime);
+    std::cout << "size: " << size << ", steps: " << steps << ", time: " << elapsed_time << std::endl; 
     // std::cout << "completed SynchronousRunner run function call" << std::endl;
     std::string file_path = "./output.json";
     std::string json = gol_simulation.structure.to_json();

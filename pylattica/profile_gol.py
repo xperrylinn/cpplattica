@@ -13,4 +13,4 @@ starting_state = setup.setup_noise(
 )
 controller = GameOfLifeController(starting_state.structure, Life)
 runner = SynchronousRunner(parallel=False)
-runner.run(starting_state.state, controller, 60)
+result = runner.run(starting_state.state, controller, 60)
