@@ -8,6 +8,12 @@
 #include <iterator>
 #include <algorithm>
 
+using Clock = std::chrono::high_resolution_clock;
+using TimePoint = std::chrono::time_point<Clock>;
+
+TimePoint start_timer();
+
+double stop_timer(const TimePoint& start);
 
 const std::string vec_to_hash_string(const arma::vec& vec);
 

@@ -9,6 +9,15 @@
 #include "helpers.h"
 
 
+TimePoint start_timer() {
+    return Clock::now();
+}
+
+double stop_timer(const TimePoint& start) {
+    TimePoint end = Clock::now();
+    return std::chrono::duration<double>(end - start).count();
+}
+
 const std::string vec_to_hash_string(const arma::vec& vec) {
     // std::cout << "vec_to_hash_string(const arma::vec& vec)" << std::endl;
 
