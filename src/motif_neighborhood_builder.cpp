@@ -9,6 +9,7 @@ std::vector<int> MotifNeighborhoodBuilder::get_neighbors(Site curr_site, Periodi
     std::cout << "MotifNeighborhoodBuilder::get_neighbors(int site_id, PeriodicStructure structure)" << std::endl;
     arma::vec location = curr_site.get_location();
     std::vector<int> neighbors;
+    neighbors.reserve(this->_motif.n_rows);
     for (int i = 0; i < this->_motif.n_rows; i += 1) {
         arma::vec neighbor_vec = this->_motif.row(i).t();
         neighbor_vec = location + neighbor_vec;
