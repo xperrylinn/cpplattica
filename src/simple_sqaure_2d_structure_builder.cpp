@@ -25,7 +25,7 @@ SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder(
 
 PeriodicStructure SimpleSquare2DStructureBuilder::build(int size) {
     std::vector<int> size_vector;
-    // std::cout << "this->lattice.dim " << this->lattice.dim << std::endl;
+    std::cout << "this->lattice.dim " << this->lattice.dim << std::endl;
     for (int i = 0; i < this->lattice.dim; i += 1) {
         size_vector.push_back(size);
     }

@@ -10,6 +10,9 @@
 PhaseSet::PhaseSet() {}
 
 PhaseSet::PhaseSet(const std::vector<std::string>& phases) {
+    this->phases_set.reserve(phases.size());
+    this->phases_map.reserve(phases.size());
+
     for (const std::string& phase : phases) {
         this->phases_set.insert(phase);
     }
