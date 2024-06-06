@@ -3,12 +3,12 @@
 
 
 SimulationState::SimulationState() {
-    std::cout << "SimulationState()" << std::endl;
+    // std::cout << "SimulationState()" << std::endl;
     this->_sites = {};
 }
 
 void SimulationState::set_site_state(int site_id, int state) {
-    std::cout << "SimulationState::set_site_state(int site_id, int state)" << std::endl;
+    // std::cout << "SimulationState::set_site_state(int site_id, int state)" << std::endl;
     this->_sites[site_id] = state;
 }
 

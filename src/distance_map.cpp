@@ -16,6 +16,6 @@ std::unordered_map<std::string, double> DistanceMap::_find_distances(arma::mat r
 }
 
 double DistanceMap::_distance(arma::vec zero_vec, arma::vec loc) {
-    std::cout << "DistanceMap::_distance(arma::vec zero_vec, arma::vec loc)" << std::endl;
+    // std::cout << "DistanceMap::_distance(arma::vec zero_vec, arma::vec loc)" << std::endl;
     return 0.0;
 }

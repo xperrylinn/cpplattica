@@ -35,11 +35,11 @@ std::vector<std::tuple<T, U>> zip(const std::vector<T>& vec1, const std::vector<
 
 template<typename T>
 void print_vector(const std::vector<T>& vec) {
-    std::cout << "[ ";
+    // std::cout << "[ ";
     for (const T& element : vec) {
-        std::cout << element << " ";
+        // std::cout << element << " ";
     }
-    std::cout << "]" << std::endl;
+    // std::cout << "]" << std::endl;
 }
 
 arma::mat get_points_in_box(const std::vector<int>& lbs, const std::vector<int>& ubs);

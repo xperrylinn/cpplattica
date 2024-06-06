@@ -14,13 +14,13 @@ StructureBuilder::StructureBuilder(
     Lattice& lattice, 
     const std::unordered_map<std::string, arma::mat>& motif
 ) {
-    std::cout << "StructureBuilder::StructureBuilder(Lattice& lattice, const std::unordered_map<std::string, arma::mat>& motif)" << std::endl;
+    // std::cout << "StructureBuilder::StructureBuilder(Lattice& lattice, const std::unordered_map<std::string, arma::mat>& motif)" << std::endl;
     this->lattice = lattice;
     this->motif = motif;
 }
 
 PeriodicStructure StructureBuilder::build(int size) {
-    std::cout << "PeriodicStructure StructureBuilder::build(int size)" << std::endl;
+    // std::cout << "PeriodicStructure StructureBuilder::build(int size)" << std::endl;
 
     std::vector<int> num_cells;
     num_cells.reserve(this->lattice.dim);

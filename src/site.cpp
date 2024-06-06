@@ -3,7 +3,7 @@
 
 
 Site::Site() {
-    std::cout << "Site()" << std::endl;
+    // std::cout << "Site()" << std::endl;
     this->_location = {};
     this->_site_class = "null_site_class";
     this->_site_id = -1;
@@ -16,7 +16,7 @@ Site::Site(
     int site_id,
     int state
 ) {
-    std::cout << "Site(arma::vec _location, std::string _site_class, int _site_id, int state)" << std::endl;
+    // std::cout << "Site(arma::vec _location, std::string _site_class, int _site_id, int state)" << std::endl;
     this->_location = location;
     this->_site_class = site_class;
     this->_site_id = site_id;
@@ -24,17 +24,17 @@ Site::Site(
 }
 
 void Site::set_site_state(int state) {
-    std::cout << "Site::set_site_state(int state)" << std::endl;
+    // std::cout << "Site::set_site_state(int state)" << std::endl;
     this->_state = state;
 }
 
 const int Site::get_site_state() const {
-    std::cout << "Site::get_site_state() const" << std::endl;
+    // std::cout << "Site::get_site_state() const" << std::endl;
     return this->_state;
 }
 
 const int Site::get_site_id() const {
-    std::cout << "Site::get_site_id() const" << std::endl;
+    // std::cout << "Site::get_site_id() const" << std::endl;
     return this->_site_id;
 }
 
