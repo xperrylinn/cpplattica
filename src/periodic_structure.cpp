@@ -1,6 +1,7 @@
 #include <armadillo>
 #include <tuple>
 #include <sstream>
+#include <unordered_map>
 #include "periodic_structure.h"
 #include "lattice.h"
 #include "periodic_structure.h"
@@ -16,32 +17,82 @@ PeriodicStructure::PeriodicStructure() {
     this->site_ids = {};
     this->_offset_vector = {};
     this->_location_lookup = {};
+    this->_site_id_rank_map = {};
 }
 
-PeriodicStructure::PeriodicStructure(Lattice lattice) {
+PeriodicStructure::PeriodicStructure(Lattice lattice, int num_procs, int rank) {
     this->lattice = lattice;
     this->dim = lattice.dim;
     this->_sites = {};
     this->site_ids = {};
     this->_offset_vector = arma::vec(this->dim, arma::fill::value(VEC_OFFSET));
     this->_location_lookup = {};
+    this->_site_id_rank_map = {};
+    this->_num_procs = num_procs;
+    this->_rank = rank;
+}
+
+const int PeriodicStructure::get_site_rank(int site_id) const {
+    // std::cout << "PeriodicStructure::get_site_rank(int site_id)" << std::endl;
+    return 0;
+}
+
+const int PeriodicStructure::get_num_procs() const {
+    // std::cout << "PeriodicStructure::get_num_procs()" << std::endl;
+    return this->_num_procs;
+}
+
+const int PeriodicStructure::get_rank() const {
+    // std::cout << "PeriodicStructure::get_num_procs()" << std::endl;
+    return this->_rank;
 }
 
 PeriodicStructure PeriodicStructure::build_from(
             Lattice lattice, 
             std::vector<int> num_cells, 
             std::unordered_map<std::string, arma::mat>& motif,
+            int num_procs,
+            int rank,
             const bool frac_coords
 ) {
     // // std::cout << "PeriodicStructure::build_from(Lattice lattice, std::vector<int> num_cells, std::unordered_map<std::string, arma::mat>& motif, const bool frac_coords)" << std::endl;
     Lattice new_lattice = lattice.get_scaled_lattice(num_cells);
-    PeriodicStructure structure(new_lattice);
+    PeriodicStructure structure(new_lattice, num_procs, rank);
 
     std::vector<int> zero_vector(new_lattice.dim, 0);
     arma::mat points(get_points_in_box(zero_vector, num_cells));
 
     if (!frac_coords) {
         points = lattice.get_matrix() * points.t();
+    }
+
+    // Assign each site to a rank
+    structure._site_id_rank_map.reserve(structure.get_num_sites());
+    int starting_row = 0;
+    int grid_dimension = ceil(structure.lattice.vec_lengths[0]);
+    std::cout << "hi: " << grid_dimension << std::endl;
+    std::cout << "structure._num_procs: " << structure.get_num_procs() << std::endl;
+    std::cout << "structure._rank: " << structure.get_rank() << std::endl;
+    for (int k = 0; k < num_procs; k += 1) {
+        std::cout << "hi" << std::endl;
+        int rows_assigned_to_rank = grid_dimension / num_procs; // int division
+        if ((grid_dimension % num_procs) > k ) { //n rows leftover, assign to first n ranks
+            rows_assigned_to_rank += 1;
+        }
+
+        for (int i = 0; i < rows_assigned_to_rank; i++) {
+            std::cout << "hi2" << std::endl;
+            for (int j = 0; j < grid_dimension; j++) {
+                int curr_site_id = (i + starting_row) * grid_dimension + j;
+                structure._site_id_rank_map[curr_site_id] = k;
+                std::cout << "structure._site_id_rank_map[curr_site_id]: " << structure._site_id_rank_map[curr_site_id] << std::endl;
+                if (rank == k) {
+                    structure.rank_site_ids.push_back(curr_site_id);
+                }
+            }
+        }
+        print_unordered_map(structure._site_id_rank_map);
+        starting_row += rows_assigned_to_rank; // incrementing for next rank's iteration 
     }
 
     for (int i = 0; i < points.n_cols; i += 1) {
@@ -58,7 +109,7 @@ PeriodicStructure PeriodicStructure::build_from(
                 if (frac_coords) {
                     throw std::invalid_argument("Logic not for frac_coords==true");
                 }
-
+                
                 structure.add_site(site_class, site_loc);
             }
         }
@@ -106,6 +157,9 @@ int PeriodicStructure::add_site(const std::string& site_class, const arma::vec& 
         new_site_id,
         -1
     );
+
+    new_site.set_site_rank(this->_site_id_rank_map[new_site_id]);
+
     this->_sites.push_back(new_site);
     std::string vec_string = vec_to_hash_string(offset_periodized_coords);
     this->_location_lookup[vec_string] = new_site_id;

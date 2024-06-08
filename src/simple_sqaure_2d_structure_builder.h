@@ -24,7 +24,7 @@ class SimpleSquare2DStructureBuilder : public StructureBuilder {
             Lattice& lattice,
             const std::unordered_map<std::string, arma::mat>& motif
         );
-        PeriodicStructure build(int size);
+        PeriodicStructure build(int size, int num_procs, int rank);
 };
 
 #endif

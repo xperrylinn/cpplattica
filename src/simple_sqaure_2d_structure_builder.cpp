@@ -23,7 +23,7 @@ SimpleSquare2DStructureBuilder::SimpleSquare2DStructureBuilder(
 
 }
 
-PeriodicStructure SimpleSquare2DStructureBuilder::build(int size) {
+PeriodicStructure SimpleSquare2DStructureBuilder::build(int size, int num_procs, int rank) {
     std::vector<int> size_vector;
     // std::cout << "this->lattice.dim " << this->lattice.dim << std::endl;
     for (int i = 0; i < this->lattice.dim; i += 1) {
@@ -33,7 +33,9 @@ PeriodicStructure SimpleSquare2DStructureBuilder::build(int size) {
         this->lattice, 
         size_vector, 
         this->motif, 
-        this->frac_coords
+        this->frac_coords,
+        num_procs,
+        rank
     );
     return periodic_structure;
 }

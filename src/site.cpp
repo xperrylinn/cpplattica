@@ -28,6 +28,11 @@ void Site::set_site_state(int state) {
     this->_state = state;
 }
 
+void Site::set_site_rank(int rank) {
+    // std::cout << "Site::set_site_rank(int rank)" << std::endl;
+    this->_rank = rank;
+}
+
 const int Site::get_site_state() const {
     // std::cout << "Site::get_site_state() const" << std::endl;
     return this->_state;
@@ -44,6 +49,10 @@ const arma::vec Site::get_location() const {
 
 const std::string Site::get_site_class() const {
     return this->_site_class;
+}
+
+const int Site::get_site_rank() const {
+    return this->_rank;
 }
 
 const std::string Site::to_json() const {

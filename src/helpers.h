@@ -7,6 +7,8 @@
 #include <tuple>
 #include <iterator>
 #include <algorithm>
+#include <unordered_map>
+
 
 using Clock = std::chrono::high_resolution_clock;
 using TimePoint = std::chrono::time_point<Clock>;
@@ -40,6 +42,15 @@ void print_vector(const std::vector<T>& vec) {
         std::cout << element << " ";
     }
     std::cout << "]" << std::endl;
+}
+
+template <typename K, typename V>
+void print_unordered_map(const std::unordered_map<K, V>& map) {
+    std::cout << "{\n";
+    for (const auto& pair : map) {
+        std::cout << "  [" << pair.first << "] = " << pair.second << ",\n";
+    }
+    std::cout << "}\n";
 }
 
 arma::mat get_points_in_box(const std::vector<int>& lbs, const std::vector<int>& ubs);

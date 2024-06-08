@@ -32,11 +32,11 @@ int main(int argc, char** argv) {
     std::vector<std::string> phases = {"alive", "dead"};    
     PhaseSet phase_set = PhaseSet(phases);
     std::cout << "created PhaseSet" << std::endl;
-    int size = 50;
-    int steps = 100;
+    int size = 5;
+    int steps = 10;
     DiscreteGridSetup setup = DiscreteGridSetup(phase_set);
     std::cout << "created DiscreteGridSetup" << std::endl;
-    Simulation gol_simulation = setup.setup_noise(phase_set, size);
+    Simulation gol_simulation = setup.setup_noise(phase_set, size, num_procs, rank);
     std::cout << "created Simulation" << std::endl;
     GameOfLifeController controller(gol_simulation.structure);
     std::cout << "created GameOfLifeController" << std::endl;
@@ -51,6 +51,12 @@ int main(int argc, char** argv) {
     std::string json = gol_simulation.structure.to_json();
     write_string_to_file(file_path, json);
     std::cout << "completed writing JSON to file" << std::endl;
+
+    for (const auto& site : gol_simulation.structure.sites()) {
+        std::cout << "site.id: " << site.get_site_id() << ", site.rank: " << site.get_site_rank() << std::endl;
+        std::cout << "site.location:" << std::endl;
+        std::cout << site.get_location() << std::endl;
+    }
 
     // Close MPI
     MPI_Finalize(); 
