@@ -3,8 +3,11 @@
 #include "simulation_state.h"
 #include "game_of_life_controller.h"
 #include "helpers.h"
+#include "mpi_state_change.h"
 #include <unordered_map>
 #include <vector>
+#include <unordered_set>
+
 
 SynchronousRunner::SynchronousRunner() {}
 
@@ -30,11 +33,15 @@ SimulationResult SynchronousRunner::_run(
         std::unordered_map<int, int> state_updates = this->_take_step(live_state, controller);
         // TODO: MPI COMMUNICATION HERE
 
-        // Create data structures for buffer communication
+        // Create data structure for scattering state updates from this rank
         std::vector<int> updated_site_ids = unordered_map_keys_to_vec(state_updates);
+        std::vector<mpi_state_change> send_buffer;
         for (const auto& site_id : updated_site_ids) {
-            std::cout << "BEFORE FAIL" << std::endl;
-            std::vector<int> neighboring_site_ids = controller.neighborhood.get_graph().at(i);
+            std::cout << "site_id: " << site_id << ", neighboring_site_ids_set: ";
+            std::vector<int> neighboring_site_ids = controller.neighborhood.get_graph().at(site_id);
+            std::unordered_set<int> neighboring_site_ids_set(neighboring_site_ids.begin(), neighboring_site_ids.end());
+            mpi_state_change state_change = {site_id, state_updates[site_id]};
+            send_buffer.push_back(state_change);
         }
 
         // Send/Receive

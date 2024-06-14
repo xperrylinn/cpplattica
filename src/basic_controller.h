@@ -16,6 +16,7 @@ class BasicController {
         Neighborhood neighborhood;
 
     public:
+        BasicController(PeriodicStructure structure);
         virtual void pre_run(SimulationState initial_state);
         int get_random_site(SimulationState state);
         SimulationResult instantiate_result(SimulationState starting_state);

@@ -8,9 +8,6 @@
 
 class GameOfLifeController : public BasicController {
     public:
-        PeriodicStructure structure;
-        Neighborhood neighborhood;
-
         void pre_run(SimulationState initial_state) override;
         GameOfLifeController(PeriodicStructure structure);
         const int get_state_update(int site_id, SimulationState curr_state) const override;

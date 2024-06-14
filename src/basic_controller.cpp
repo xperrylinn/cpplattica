@@ -5,6 +5,8 @@
 #include "simulation_state.h"
 
 
+BasicController::BasicController(PeriodicStructure structure) : structure(structure) {}
+
 int BasicController::get_random_site(SimulationState state) {
     // std::cout << "BasicController::get_random_site(SimulationState state)" << std::endl;
     return rand() % state.num_sites();

@@ -8,6 +8,7 @@
 #include <iterator>
 #include <algorithm>
 #include <unordered_map>
+#include <unordered_set>
 
 
 using Clock = std::chrono::high_resolution_clock;
@@ -60,7 +61,17 @@ std::vector<typename Map::key_type> unordered_map_keys_to_vec(const Map& map) {
     for (const auto& pair : map) {
         keys.push_back(pair.first);
     }
+    print_vector(keys);
     return keys;
+}
+
+template <typename T>
+void print_unordered_set(const std::unordered_set<T>& uset) {
+    std::cout << "{ ";
+    for (const auto& elem : uset) {
+        std::cout << elem << " ";
+    }
+    std::cout << "}" << std::endl;
 }
 
 arma::mat get_points_in_box(const std::vector<int>& lbs, const std::vector<int>& ubs);

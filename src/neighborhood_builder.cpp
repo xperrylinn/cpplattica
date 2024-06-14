@@ -2,6 +2,7 @@
 #include "neighborhood_builder.h"
 #include "periodic_structure.h"
 #include "neighborhood.h"
+#include "helpers.h"
 #include "site.h"
 
 
@@ -23,7 +24,10 @@ Neighborhood NeighborhoodBuilder::get(PeriodicStructure structure, std::string s
 
     for (const auto& curr_site: structure.sites()) {
         std::vector<int> neighbors = this->get_neighbors(curr_site, structure);
+        std::cout << "curr_site: " << curr_site.get_site_id() << ", neighbors: ";
+        print_vector(neighbors);
         for (const auto& curr_neighbor_id: neighbors) {
+
             graph[curr_site.get_site_id()].push_back(curr_neighbor_id);
         }
     }

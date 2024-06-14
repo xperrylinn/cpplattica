@@ -113,3 +113,17 @@ To cancel a specific job:
 ```
 scancel $JobID
 ```
+
+### Debugging with GDB
+
+Set breakpoint on a specific file and line:
+
+```
+break /global/homes/x/xlinn/cpplattica/src/synchronous_runner.cpp:37
+```
+
+Print variables:
+
+
+```
+```

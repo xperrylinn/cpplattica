@@ -70,6 +70,7 @@ set(SOURCES
     ${SRC_DIR}/synchronous_runner.cpp
     ${SRC_DIR}/runner.h
     ${SRC_DIR}/runner.cpp
+    ${SRC_DIR}/mpi_state_change.h
 )
 
 # Add the executable

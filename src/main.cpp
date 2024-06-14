@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
     std::vector<std::string> phases = {"alive", "dead"};    
     PhaseSet phase_set = PhaseSet(phases);
     // std::cout << "created PhaseSet" << std::endl;
-    int size = 5;
+    int size = 2;
     int steps = 10;
     DiscreteGridSetup setup = DiscreteGridSetup(phase_set);
     // std::cout << "created DiscreteGridSetup" << std::endl;
