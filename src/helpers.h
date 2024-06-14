@@ -53,6 +53,16 @@ void print_unordered_map(const std::unordered_map<K, V>& map) {
     std::cout << "}\n";
 }
 
+template <typename Map>
+std::vector<typename Map::key_type> unordered_map_keys_to_vec(const Map& map) {
+    std::vector<typename Map::key_type> keys;
+    keys.reserve(map.size());  // Reserve enough space in the vector to avoid multiple reallocations
+    for (const auto& pair : map) {
+        keys.push_back(pair.first);
+    }
+    return keys;
+}
+
 arma::mat get_points_in_box(const std::vector<int>& lbs, const std::vector<int>& ubs);
 
 arma::mat get_points_in_cube(int lb, int ub, int dim);

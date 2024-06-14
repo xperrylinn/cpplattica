@@ -17,7 +17,6 @@ class PeriodicStructure {
         Lattice lattice;
         int dim;
         std::vector<int> site_ids;
-        std::vector<int> rank_site_ids;
         static std::vector<double> vec_offset;
 
 
@@ -40,6 +39,7 @@ class PeriodicStructure {
         const std::vector<Site> sites(std::string site_class) const;
         const Site get_site(int site_id) const;
         const int get_num_sites() const;
+        const std::vector<int> get_rank_site_ids() const;
         const int id_at(arma::vec location) const;
         const Site site_at(arma::vec location) const;
         const std::string to_json() const;
@@ -48,6 +48,7 @@ class PeriodicStructure {
         const int get_site_rank(int site_id) const;
         const int get_num_procs() const;
         const int get_rank() const;
+        void add_site_id_to_rank(int site_id);
 
         private:
             int _num_procs;
@@ -56,7 +57,7 @@ class PeriodicStructure {
             arma::vec _offset_vector;
             std::unordered_map<std::string, int> _location_lookup;
             std::unordered_map<int, int> _site_id_rank_map;
-
+            std::vector<int> _rank_site_ids;
 };
 
 #endif

@@ -6,9 +6,15 @@
 #include <unordered_map>
 #include "simulation_state.h"
 #include "simulation_result.h"
+#include "neighborhood.h"
+#include "periodic_structure.h"
 
 
 class BasicController {
+    public:
+        PeriodicStructure structure;
+        Neighborhood neighborhood;
+
     public:
         virtual void pre_run(SimulationState initial_state);
         int get_random_site(SimulationState state);

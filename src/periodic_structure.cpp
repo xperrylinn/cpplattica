@@ -47,6 +47,10 @@ const int PeriodicStructure::get_rank() const {
     return this->_rank;
 }
 
+const std::vector<int> PeriodicStructure::get_rank_site_ids() const {
+    return this->_rank_site_ids;
+}
+
 PeriodicStructure PeriodicStructure::build_from(
             Lattice lattice, 
             std::vector<int> num_cells, 
@@ -70,30 +74,30 @@ PeriodicStructure PeriodicStructure::build_from(
     structure._site_id_rank_map.reserve(structure.get_num_sites());
     int starting_row = 0;
     int grid_dimension = ceil(structure.lattice.vec_lengths[0]);
-    std::cout << "hi: " << grid_dimension << std::endl;
-    std::cout << "structure._num_procs: " << structure.get_num_procs() << std::endl;
-    std::cout << "structure._rank: " << structure.get_rank() << std::endl;
     for (int k = 0; k < num_procs; k += 1) {
-        std::cout << "hi" << std::endl;
         int rows_assigned_to_rank = grid_dimension / num_procs; // int division
         if ((grid_dimension % num_procs) > k ) { //n rows leftover, assign to first n ranks
             rows_assigned_to_rank += 1;
         }
 
         for (int i = 0; i < rows_assigned_to_rank; i++) {
-            std::cout << "hi2" << std::endl;
             for (int j = 0; j < grid_dimension; j++) {
                 int curr_site_id = (i + starting_row) * grid_dimension + j;
                 structure._site_id_rank_map[curr_site_id] = k;
-                std::cout << "structure._site_id_rank_map[curr_site_id]: " << structure._site_id_rank_map[curr_site_id] << std::endl;
                 if (rank == k) {
-                    structure.rank_site_ids.push_back(curr_site_id);
+                    structure.add_site_id_to_rank(curr_site_id);
                 }
             }
         }
-        print_unordered_map(structure._site_id_rank_map);
         starting_row += rows_assigned_to_rank; // incrementing for next rank's iteration 
     }
+
+    // Log rank site id data structures
+    // std::cout << "rank: " << rank << std::endl;
+    // print_unordered_map(structure._site_id_rank_map);
+    // std::cout << "rank: " << rank << std::endl;
+    // print_vector(structure._rank_site_ids);
+
 
     for (int i = 0; i < points.n_cols; i += 1) {
         arma::vec point = points.col(i);
@@ -219,4 +223,8 @@ const std::string PeriodicStructure::to_json() const {
     std::ostringstream result;
     result << "{\"lattice\": " << this->lattice.to_json() << ", \"_sites\": " << _sites_val.str() << "}";
     return result.str();
+}
+
+void PeriodicStructure::add_site_id_to_rank(int site_id) {
+    this->_rank_site_ids.push_back(site_id);
 }
