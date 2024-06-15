@@ -7,6 +7,8 @@
 
 class Runner {
     public:
+        int rank;
+        int num_procs;
         Runner();
 
         SimulationResult run(SimulationState& initial_state, BasicController& controller, int num_steps);

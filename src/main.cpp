@@ -41,6 +41,8 @@ int main(int argc, char** argv) {
     GameOfLifeController controller(gol_simulation.structure);
     // std::cout << "created GameOfLifeController" << std::endl;
     SynchronousRunner runner;
+    runner.rank = rank;
+    runner.num_procs = num_procs;
     // std::cout << "created SynchronousRunner" << std::endl;
     SimulationResult result = runner.run(gol_simulation.state, controller, steps);
     // Stop timer

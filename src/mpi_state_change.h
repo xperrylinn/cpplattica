@@ -8,7 +8,7 @@ struct mpi_state_change {
     int new_state;
 };
 
-inline MPI_Datatype createMPIStateChangeType() {
+inline MPI_Datatype create_mpi_state_change_type() {
     MPI_Datatype mpiStateChangeType;
 
     int blockLengths[2] = {1, 1}; // Each member is a single element
