@@ -33,8 +33,8 @@ const std::vector<int> SimulationState::get_site_ids() const {
 }
 
 const std::vector<int> SimulationState::get_rank_site_ids() const {
-    std::cout << "SimulationState::get_rank_site_ids()" << std::endl;
-    print_vector(this->_rank_site_ids);
+    // std::cout << "SimulationState::get_rank_site_ids()" << std::endl;
+    // print_vector(this->_rank_site_ids);
     return this->_rank_site_ids;
 }
 

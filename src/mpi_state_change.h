@@ -9,7 +9,7 @@ struct mpi_state_change {
 };
 
 inline MPI_Datatype create_mpi_state_change_type() {
-    MPI_Datatype mpiStateChangeType;
+    MPI_Datatype mpi_state_change_type;
 
     int blockLengths[2] = {1, 1}; // Each member is a single element
 
@@ -19,10 +19,10 @@ inline MPI_Datatype create_mpi_state_change_type() {
 
     MPI_Datatype types[2] = {MPI_INT, MPI_INT};
 
-    MPI_Type_create_struct(2, blockLengths, offsets, types, &mpiStateChangeType);
-    MPI_Type_commit(&mpiStateChangeType);
+    MPI_Type_create_struct(2, blockLengths, offsets, types, &mpi_state_change_type);
+    MPI_Type_commit(&mpi_state_change_type);
 
-    return mpiStateChangeType;
+    return mpi_state_change_type;
 }
 
 #endif // MPI_STATE_CHANGE_TYPE_H

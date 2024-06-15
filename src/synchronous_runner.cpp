@@ -75,13 +75,18 @@ SimulationResult SynchronousRunner::_run(
         );
 
         // Print the received data on each rank
-        for (int i = 0; i < total_changes && rank == 3; i += 1) {
-            std::cout << "step: " << i << ", rank " << rank << " recv data:" << " site_id: " << recv_buffer[i].site_id << ", new_state: " << recv_buffer[i].new_state << std::endl;
-        }
-
-        
+        // for (int j = 0; j < total_changes && rank == 3; j += 1) {
+        //     std::cout << "step: " << i;
+        //     std::cout << ", rank: " << rank;
+        //     std::cout << " recv data: site_id: " << recv_buffer[j].site_id;
+        //     std::cout << ", new_state: " << recv_buffer[j].new_state;
+        //     std::cout << ", old_state: " << initial_state.get_site_state(recv_buffer[j].site_id) << std::endl;
+        // }
 
         // Synchronization
+        for (const auto& state_change: recv_buffer) {
+            live_state.set_site_state(state_change.site_id, state_change.new_state);
+        }
 
         result.add_step(state_updates);
     }

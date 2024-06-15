@@ -32,8 +32,8 @@ int main(int argc, char** argv) {
     std::vector<std::string> phases = {"alive", "dead"};    
     PhaseSet phase_set = PhaseSet(phases);
     // std::cout << "created PhaseSet" << std::endl;
-    int size = 8;
-    int steps = 3;
+    int size = 100;
+    int steps = 100;
     DiscreteGridSetup setup = DiscreteGridSetup(phase_set);
     // std::cout << "created DiscreteGridSetup" << std::endl;
     Simulation gol_simulation = setup.setup_noise(phase_set, size, num_procs, rank);
