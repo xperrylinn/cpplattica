@@ -18,8 +18,6 @@ const int GameOfLifeController::get_state_update(int site_id, SimulationState cu
     int dead_neighbor_count = 0;
 
     std::vector<int> neighbor_ids = this->neighborhood.get_graph().at(site_id);
-    std::cout << "neighbor_ids: ";
-    print_vector(neighbor_ids);
 
     for (const auto& neighbor_id : neighbor_ids) {
         int neighbor_state = curr_state.get_site_state(neighbor_id);
@@ -36,6 +34,8 @@ const int GameOfLifeController::get_state_update(int site_id, SimulationState cu
     if (current_site_state == 1 && (alive_neighbor_count == 2 || alive_neighbor_count == 3)) {
         new_state = 1;
     } else if (current_site_state == 0 && alive_neighbor_count == 3) {
+        new_state = 1;
+    } else {
         new_state = 0;
     }
     

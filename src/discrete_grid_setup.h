@@ -19,7 +19,7 @@ class DiscreteGridSetup {
         Simulation setup_noise(PhaseSet& phase_set, int size, int num_procs, int rank);
     private:
         StructureBuilder _builder;
-        SimulationState _build_blank_state(const PeriodicStructure& structure);
+        SimulationState _build_blank_state(const PeriodicStructure& structure, int rank);
         
 };
 

@@ -61,7 +61,6 @@ std::vector<typename Map::key_type> unordered_map_keys_to_vec(const Map& map) {
     for (const auto& pair : map) {
         keys.push_back(pair.first);
     }
-    print_vector(keys);
     return keys;
 }
 

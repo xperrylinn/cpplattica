@@ -28,7 +28,7 @@ Simulation DiscreteGridSetup::setup_noise(PhaseSet& phase_set, int size, int num
     // std::cout << "DiscreteGridSetup::setup_noise(PhaseSet& phase_set, int size)" << std::endl;
     PeriodicStructure structure = this->_builder.build(size, num_procs, rank);
     // state: SimulationState = self._build_blank_state(structure)
-    SimulationState state = this->_build_blank_state(structure);
+    SimulationState state = this->_build_blank_state(structure, rank);
     for (const auto& site : structure.sites()) {
         int random_state = phase_set.get_uniform_random_state();
         state.set_site_state(site.get_site_id(), random_state);
@@ -37,10 +37,13 @@ Simulation DiscreteGridSetup::setup_noise(PhaseSet& phase_set, int size, int num
     return simulation;
 }
 
-SimulationState DiscreteGridSetup::_build_blank_state(const PeriodicStructure& structure) {
+SimulationState DiscreteGridSetup::_build_blank_state(const PeriodicStructure& structure, int rank) {
     // std::cout << "DiscreteGridSetup::_build_blank_state(const PeriodicStructure& structure)" << std::endl;
-    SimulationState state;
+    SimulationState state(rank);
     for (const auto& site : structure.sites()) {
+        if (site.get_site_rank() == rank) {
+            state.add_rank_site_id(site.get_site_id());
+        }   
         state.set_site_state(site.get_site_id(), -1);
     }
     return state;

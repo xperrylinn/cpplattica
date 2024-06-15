@@ -42,13 +42,11 @@ SimulationResult SynchronousRunner::_run(
             mpi_state_change state_change = {site_id, state_updates[site_id]};
             send_buffer.push_back(state_change);
         }
-
         // Broadcast number of changes to all processes
 
         // Each process sends its size
         int num_changes = send_buffer.size();
         std::vector<int> all_sizes(this->num_procs);
-        std::cout << "FAILURE 2" << this->num_procs << std::endl;
         MPI_Allgather(&num_changes, 1, MPI_INT, all_sizes.data(), 1, MPI_INT, MPI_COMM_WORLD);
 
         // Calculate the total number of changes and the displacements for each rank
@@ -60,7 +58,6 @@ SimulationResult SynchronousRunner::_run(
         }
 
         // Allocate a buffer to receive all the data
-        std::cout << "FAILURE 2" << std::endl;
         MPI_Datatype mpi_state_change_type = create_mpi_state_change_type();
 
         std::vector<mpi_state_change> recv_buffer(total_changes);
@@ -78,10 +75,8 @@ SimulationResult SynchronousRunner::_run(
         );
 
         // Print the received data on each rank
-        std::cout << "rank " << rank << " received data:" << std::endl;
-        for (int i = 0; i < total_changes; ++i) {
-            std::cout << "  site_id=" << recv_buffer[i].site_id 
-                    << ", new_state=" << recv_buffer[i].new_state << std::endl;
+        for (int i = 0; i < total_changes && rank == 3; i += 1) {
+            std::cout << "step: " << i << ", rank " << rank << " recv data:" << " site_id: " << recv_buffer[i].site_id << ", new_state: " << recv_buffer[i].new_state << std::endl;
         }
 
         
@@ -98,7 +93,8 @@ std::unordered_map<int, int> SynchronousRunner::_take_step(
     BasicController& controller
 ) {
     // std::cout << "_take_step(SimulationState state, BasicController controller)" << std::endl;
-    std::vector<int> site_ids = state.get_site_ids();
+    // std::vector<int> site_ids = state.get_site_ids();
+    std::vector<int> site_ids = state.get_rank_site_ids();
     std::unordered_map<int, int> updated_sites(this->_step_batch(site_ids, state, controller));
     return updated_sites;
 }

@@ -97,7 +97,7 @@ build> salloc -N 2 -C cpu -q interactive -t 01:00:00
 ```
 
 ```
-srun -N 2 --ntasks-per-node=1 ./mpi
+srun -N 2 --ntasks-per-node=2 ./mpi
 ```
 
 ### Viewing current jobs on NERSC
