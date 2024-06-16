@@ -11,7 +11,7 @@ struct mpi_state_change {
 inline MPI_Datatype create_mpi_state_change_type() {
     MPI_Datatype mpi_state_change_type;
 
-    int blockLengths[2] = {1, 1}; // Each member is a single element
+    int blockLengths[2] = {1, 1};
 
     MPI_Aint offsets[2];
     offsets[0] = offsetof(mpi_state_change, site_id);

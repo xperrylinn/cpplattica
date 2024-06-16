@@ -23,14 +23,14 @@ SimulationResult Runner::_run(
     return SimulationResult();
 }
 
-std::unordered_map<int, int> Runner::_take_step(
+std::vector<mpi_state_change> Runner::_take_step(
     SimulationState& state,
     BasicController& controller
 ) {
     return {};
 }
 
-std::unordered_map<int, int> Runner::_step_batch(
+std::vector<mpi_state_change> Runner::_step_batch(
     std::vector<int>& id_batch,
     SimulationState& previous_state,
     BasicController& controller

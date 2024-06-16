@@ -30,22 +30,12 @@ SimulationResult SynchronousRunner::_run(
 ) {
     // std::cout << "SynchronousRunner::_run(SimulationState initial_state, SimulationResult result, SimulationState live_state, BasicController controller, int num_steps)" << std::endl;
     for (int i = 0 ; i < num_steps; i += 1) {
-        std::unordered_map<int, int> state_updates = this->_take_step(live_state, controller);
+        std::vector<mpi_state_change> state_updates = this->_take_step(live_state, controller);
         // TODO: MPI COMMUNICATION HERE
-
-        // Create data structure for broadcasting state updates from this rank
-        std::vector<int> updated_site_ids = unordered_map_keys_to_vec(state_updates);
-        std::vector<mpi_state_change> send_buffer;
-        for (const auto& site_id : updated_site_ids) {
-            std::vector<int> neighboring_site_ids = controller.neighborhood.get_graph().at(site_id);
-            std::unordered_set<int> neighboring_site_ids_set(neighboring_site_ids.begin(), neighboring_site_ids.end());
-            mpi_state_change state_change = {site_id, state_updates[site_id]};
-            send_buffer.push_back(state_change);
-        }
         // Broadcast number of changes to all processes
 
         // Each process sends its size
-        int num_changes = send_buffer.size();
+        int num_changes = state_updates.size();
         std::vector<int> all_sizes(this->num_procs);
         MPI_Allgather(&num_changes, 1, MPI_INT, all_sizes.data(), 1, MPI_INT, MPI_COMM_WORLD);
 
@@ -64,7 +54,7 @@ SimulationResult SynchronousRunner::_run(
 
         // Use MPI_Allgatherv to gather the data from all ranks
         MPI_Allgatherv(
-            send_buffer.data(), 
+            state_updates.data(), 
             num_changes, 
             mpi_state_change_type, 
             recv_buffer.data(), 
@@ -83,40 +73,41 @@ SimulationResult SynchronousRunner::_run(
         //     std::cout << ", old_state: " << initial_state.get_site_state(recv_buffer[j].site_id) << std::endl;
         // }
 
-        // Synchronization
+        // Update live state
         for (const auto& state_change: recv_buffer) {
             live_state.set_site_state(state_change.site_id, state_change.new_state);
         }
 
+        std::cout << "state_updates.size(): " << state_updates.size() << std::endl;
         result.add_step(state_updates);
     }
     return result;
 }
 
-std::unordered_map<int, int> SynchronousRunner::_take_step(
+std::vector<mpi_state_change> SynchronousRunner::_take_step(
     SimulationState& state,
     BasicController& controller
 ) {
     // std::cout << "_take_step(SimulationState state, BasicController controller)" << std::endl;
     // std::vector<int> site_ids = state.get_site_ids();
     std::vector<int> site_ids = state.get_rank_site_ids();
-    std::unordered_map<int, int> updated_sites(this->_step_batch(site_ids, state, controller));
+    std::vector<mpi_state_change> updated_sites(this->_step_batch(site_ids, state, controller));
     return updated_sites;
 }
 
-std::unordered_map<int, int> SynchronousRunner::_step_batch(
+std::vector<mpi_state_change> SynchronousRunner::_step_batch(
     std::vector<int>& id_batch,
     SimulationState& previous_state,
     BasicController& controller
 ) {
     // std::cout << "SynchronousRunner::_step_batch(std::vector<int> id_batch, SimulationState previous_state, BasicController controller)" << std::endl;
-    std::unordered_map<int, int> updated_states;
+    std::vector<mpi_state_change> updated_states;
     updated_states.reserve(id_batch.size());
     for (const auto& site_id : id_batch) {
         const int current_state = previous_state.get_site_state(site_id);
         int updated_state = controller.get_state_update(site_id, previous_state);
         if (current_state != updated_state) {
-            updated_states[site_id] = updated_state;
+            updated_states.push_back({site_id, updated_state});
         } 
     }
     return updated_states;

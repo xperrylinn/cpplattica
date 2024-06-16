@@ -2,6 +2,7 @@
 #define SIMULATIONRESULT_H
 #include <unordered_map>
 #include "simulation_state.h"
+#include "mpi_state_change.h"
 
 
 class SimulationResult {
@@ -10,12 +11,13 @@ class SimulationResult {
         SimulationState first_step;
         SimulationState last_step;
         SimulationState output;
-        std::vector<std::unordered_map<int, int>> states;
 
         SimulationResult();
         SimulationResult(SimulationState initial_state);
-        void add_step(std::unordered_map<int, int> state);
+        void add_step(std::vector<mpi_state_change> state_changes);
         void set_output(SimulationState step);
+    private:
+        std::vector<std::vector<mpi_state_change>> _diffs;      
 };
 
 #endif
