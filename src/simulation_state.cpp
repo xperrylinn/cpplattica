@@ -47,3 +47,27 @@ const int SimulationState::get_site_state(int site_id) const {
     // std::cout << "SimulationState::get_site_state(int site_id)" << std::endl;
     return this->_sites.at(site_id);
 }
+
+const std::string SimulationState::to_json() const {
+    // std::cout << "SimulationState::to_json()" << std::endl;
+    std::ostringstream oss;
+    oss << "{";
+    oss << "\"state\": {";
+    oss << "\"SITES\": {";
+    bool first = true;
+    for (const auto& site : _sites) {
+        if (!first) {
+            oss << ",";
+        }
+        oss << "\"" << site.first << "\": {";
+        oss << "\"_site_id\": " << site.first << ",";
+        oss << "\"DISCRETE_OCCUPANCY\": \"" << site.second << "\"";
+        oss << "}";
+        first = false;
+    }
+    oss << "},";
+    oss << "\"GENERAL\": {}";
+    oss << "}";
+    oss << "}";
+    return oss.str();
+    }

@@ -73,6 +73,28 @@ void print_unordered_set(const std::unordered_set<T>& uset) {
     std::cout << "}" << std::endl;
 }
 
+template <typename T>
+std::vector<std::vector<T>> merge_vectors(
+    const std::vector<std::vector<T>>& vec1,
+    const std::vector<std::vector<T>>& vec2) {
+
+    // Check if the two vectors have the same size
+    if (vec1.size() != vec2.size()) {
+        throw std::invalid_argument("Vectors must be of the same size");
+    }
+
+    // Resultant vector to store merged results
+    std::vector<std::vector<T>> result(vec1.size());
+
+    // Iterate through both vectors and concatenate the inner vectors
+    for (size_t i = 0; i < vec1.size(); ++i) {
+        result[i] = vec1[i];  // Copy the first vector's inner vector
+        result[i].insert(result[i].end(), vec2[i].begin(), vec2[i].end());  // Append the second vector's inner vector
+    }
+
+    return result;
+}
+
 arma::mat get_points_in_box(const std::vector<int>& lbs, const std::vector<int>& ubs);
 
 arma::mat get_points_in_cube(int lb, int ub, int dim);

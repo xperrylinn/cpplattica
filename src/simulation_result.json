@@ -1,0 +1,498 @@
+{
+    "initial_state": {
+        "state": {
+            "SITES": {
+                "0": {
+                    "_site_id": 0,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "1": {
+                    "_site_id": 1,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "2": {
+                    "_site_id": 2,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "3": {
+                    "_site_id": 3,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "4": {
+                    "_site_id": 4,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "5": {
+                    "_site_id": 5,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "6": {
+                    "_site_id": 6,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "7": {
+                    "_site_id": 7,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "8": {
+                    "_site_id": 8,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "9": {
+                    "_site_id": 9,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "10": {
+                    "_site_id": 10,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "11": {
+                    "_site_id": 11,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "12": {
+                    "_site_id": 12,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "13": {
+                    "_site_id": 13,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "14": {
+                    "_site_id": 14,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "15": {
+                    "_site_id": 15,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "16": {
+                    "_site_id": 16,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "17": {
+                    "_site_id": 17,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "18": {
+                    "_site_id": 18,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "19": {
+                    "_site_id": 19,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "20": {
+                    "_site_id": 20,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "21": {
+                    "_site_id": 21,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "22": {
+                    "_site_id": 22,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "23": {
+                    "_site_id": 23,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "24": {
+                    "_site_id": 24,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "25": {
+                    "_site_id": 25,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "26": {
+                    "_site_id": 26,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "27": {
+                    "_site_id": 27,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "28": {
+                    "_site_id": 28,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "29": {
+                    "_site_id": 29,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "30": {
+                    "_site_id": 30,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "31": {
+                    "_site_id": 31,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "32": {
+                    "_site_id": 32,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "33": {
+                    "_site_id": 33,
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "34": {
+                    "_site_id": 34,
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "35": {
+                    "_site_id": 35,
+                    "DISCRETE_OCCUPANCY": "alive"
+                }
+            },
+            "GENERAL": {}
+        },
+        "@module": "pylattica.core.simulation_state",
+        "@class": "SimulationState"
+    },
+    "diffs": [
+        {
+            "SITES": {
+                "0": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "1": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "2": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "3": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "4": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "5": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "6": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "7": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "8": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "9": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "10": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "11": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "12": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "13": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "14": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "15": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "16": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "17": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "18": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "19": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "20": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "21": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "22": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "23": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "24": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "25": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "26": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "27": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "28": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "29": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "30": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "31": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "32": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "33": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "34": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "35": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                }
+            },
+            "GENERAL": {}
+        },
+        {
+            "SITES": {
+                "0": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "1": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "2": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "3": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "4": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "5": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "6": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "7": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "8": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "9": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "10": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "11": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "12": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "13": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "14": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "15": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "16": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "17": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "18": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "19": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "20": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "21": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "22": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "23": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "24": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "25": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "26": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "27": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "28": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "29": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "30": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "31": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "32": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "33": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "34": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "35": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                }
+            },
+            "GENERAL": {}
+        },
+        {
+            "SITES": {
+                "0": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "1": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "2": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "3": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "4": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "5": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "6": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "7": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "8": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "9": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "10": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "11": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "12": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "13": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "14": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "15": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "16": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "17": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "18": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "19": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "20": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "21": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "22": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "23": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "24": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "25": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "26": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "27": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "28": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "29": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "30": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "31": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "32": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "33": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                },
+                "34": {
+                    "DISCRETE_OCCUPANCY": "alive"
+                },
+                "35": {
+                    "DISCRETE_OCCUPANCY": "dead"
+                }
+            },
+            "GENERAL": {}
+        }
+    ],
+    "@module": "pylattica.core.simulation_result",
+    "@class": "SimulationResult"
+}

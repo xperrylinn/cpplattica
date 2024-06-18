@@ -127,3 +127,7 @@ Print variables:
 
 ```
 ```
+
+# Resources
+
+- [MPI 3.1 docs](https://www.open-mpi.org/doc/v3.1/)
