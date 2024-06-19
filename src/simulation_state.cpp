@@ -61,7 +61,7 @@ const std::string SimulationState::to_json() const {
         }
         oss << "\"" << site.first << "\": {";
         oss << "\"_site_id\": " << site.first << ",";
-        oss << "\"DISCRETE_OCCUPANCY\": \"" << site.second << "\"";
+        oss << "\"STATE\": \"" << site.second << "\"";
         oss << "}";
         first = false;
     }

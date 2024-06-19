@@ -34,9 +34,8 @@ SimulationResult SynchronousRunner::_run(
     // std::cout << "SynchronousRunner::_run(SimulationState initial_state, SimulationResult result, SimulationState live_state, BasicController controller, int num_steps)" << std::endl;
     for (int i = 0 ; i < num_steps; i += 1) {
         std::vector<mpi_state_change> state_updates = this->_take_step(live_state, controller);
-        // TODO: MPI COMMUNICATION HERE
+        
         // Broadcast number of changes to all processes
-
         // Explicit barrier to make sure all processes have completed their updates
         MPI_Barrier(MPI_COMM_WORLD);
 
@@ -82,7 +81,7 @@ SimulationResult SynchronousRunner::_run(
         }
 
         // Print the size of state_updates
-        // std::cout << "step: " << i << ", rank: " << rank << ", state_updates.size(): " << state_updates.size() << std::endl;
+        std::cout << "step: " << i << ", rank: " << rank << ", state_updates.size(): " << state_updates.size() << std::endl;
         
         result.add_step(state_updates);
     }
@@ -99,6 +98,7 @@ SimulationResult SynchronousRunner::_run(
 
     // Get the size of the flattened local vector
     int local_size = flat_local_changes.size();
+    std::cout << "rank: " << rank << ", local_size: " << local_size << std::endl;
 
     // Gather the sizes from all ranks to rank 0
     std::vector<int> all_sizes(this->num_procs);
@@ -116,6 +116,7 @@ SimulationResult SynchronousRunner::_run(
 
     // Rank 0 allocates the receive buffer
     std::vector<mpi_state_change> all_changes(total_size);
+    std::cout << "rank: " << rank << ", all_changes.size(): " << all_changes.size() << std::endl;
 
     // Gather all the flattened vectors to rank 0
     MPI_Gatherv(flat_local_changes.data(), local_size, mpi_state_change_type,
@@ -123,7 +124,7 @@ SimulationResult SynchronousRunner::_run(
 
     // Reconstruct the nested structure on rank 0
     if (this->rank == 0) {
-        std::vector<std::vector<mpi_state_change>> gathered_changes(this->num_procs);
+        std::vector<std::vector<mpi_state_change>> gathered_changes(num_steps);
         int offset = 0;
         for (int i = 1; i < this->num_procs; i += 1) {  // All ranks but zero
             std::vector<mpi_state_change> inner_vec(
@@ -135,11 +136,11 @@ SimulationResult SynchronousRunner::_run(
         }
 
         // Print the gathered data for verification
-        for (int i = 0; i < gathered_changes.size(); ++i) {
-            for (const auto& change : gathered_changes[i]) {
-                std::cout << "{\"step\": " << i << ", \"src_rank\": " << change.src_rank <<  ", \"site_id\": " << change.site_id << ", \"new_state\": " << change.new_state << "}," << std::endl;
-            }
-        }
+        // for (int i = 0; i < gathered_changes.size(); ++i) {
+        //     for (const auto& change : gathered_changes[i]) {
+        //         std::cout << "{\"step\": " << i << ", \"src_rank\": " << change.src_rank <<  ", \"site_id\": " << change.site_id << ", \"new_state\": " << change.new_state << "}," << std::endl;
+        //     }
+        // }
 
         result.set_diffs(gathered_changes);
     }
@@ -153,8 +154,11 @@ std::vector<mpi_state_change> SynchronousRunner::_take_step(
 ) {
     // std::cout << "_take_step(SimulationState state, BasicController controller)" << std::endl;
     std::vector<int> site_ids = state.get_rank_site_ids();
-    std::cout << "rank: " << this->rank << ", site_ids: ";
-    print_vector(site_ids);
+
+    // Print neighbors for debugging
+    // std::cout << "rank: " << this->rank << ", site_ids: ";
+    // print_vector(site_ids);
+
     std::vector<mpi_state_change> updated_sites(this->_step_batch(site_ids, state, controller));
     return updated_sites;
 }

@@ -53,7 +53,7 @@ const std::string SimulationResult::to_json() const {
             if (!first_inner) {
                 oss << ",";
             }
-            oss << "\"" << change.site_id << "\": { \"DISCRETE_OCCUPANCY\": " 
+            oss << "\"" << change.site_id << "\": { \"STATE\": " 
                 << change.new_state << "}";
             first_inner = false;
         }
