@@ -31,6 +31,8 @@ SimulationResult SynchronousRunner::_run(
     // Allocate a buffer to receive all the data
     MPI_Datatype mpi_state_change_type = create_mpi_state_change_type();
 
+    std::cout << "rank: " << rank << ", live_state.get_rank_site_ids.size(): " << live_state.get_rank_site_ids().size() << std::endl;
+
     // std::cout << "SynchronousRunner::_run(SimulationState initial_state, SimulationResult result, SimulationState live_state, BasicController controller, int num_steps)" << std::endl;
     for (int i = 0 ; i < num_steps; i += 1) {
         std::vector<mpi_state_change> state_updates = this->_take_step(live_state, controller);

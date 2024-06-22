@@ -10,12 +10,12 @@ SimulationResult::SimulationResult(SimulationState initial_state) {
     this->_diffs = {};
 }
 
-void SimulationResult::add_step(std::vector<mpi_state_change> state_change) {
+void SimulationResult::add_step(std::vector<mpi_state_change>& state_change) {
     // std::cout << "SimulationResult::add_step(std::unordered_map<int, int> state)" << std::endl;
     this->_diffs.push_back(state_change);
 }
 
-void SimulationResult::set_output(SimulationState step) {
+void SimulationResult::set_output(SimulationState& step) {
     // std::cout << "SimulationResult::set_output(SimulationState step)" << std::endl;
     this->output = step;
 }
@@ -25,7 +25,7 @@ const std::vector<std::vector<mpi_state_change>> SimulationResult::get_diffs() c
     return this->_diffs;
 }
 
-void SimulationResult::set_diffs(std::vector<std::vector<mpi_state_change>> diffs) {
+void SimulationResult::set_diffs(std::vector<std::vector<mpi_state_change>>& diffs) {
     this->_diffs = diffs;
 }
 
@@ -46,14 +46,14 @@ const std::string SimulationResult::to_json() const {
         if (!first_outer) {
             oss << ",";
         }
-        oss << "{ \"SITES\": {";
+        oss << "{ \"DISCRETE_OCCUPANCY\": {";
         bool first_inner = true;
         
         for (const auto& change : rank_changes) {
             if (!first_inner) {
                 oss << ",";
             }
-            oss << "\"" << change.site_id << "\": { \"STATE\": " 
+            oss << "\"" << change.site_id << "\": { \"DISCRETE_OCCUPANCY\": " 
                 << change.new_state << "}";
             first_inner = false;
         }

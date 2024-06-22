@@ -53,7 +53,7 @@ const std::string SimulationState::to_json() const {
     std::ostringstream oss;
     oss << "{";
     oss << "\"state\": {";
-    oss << "\"SITES\": {";
+    oss << "\"DISCRETE_OCCUPANCY\": {";
     bool first = true;
     for (const auto& site : _sites) {
         if (!first) {
@@ -61,7 +61,7 @@ const std::string SimulationState::to_json() const {
         }
         oss << "\"" << site.first << "\": {";
         oss << "\"_site_id\": " << site.first << ",";
-        oss << "\"STATE\": \"" << site.second << "\"";
+        oss << "\"DISCRETE_OCCUPANCY\": \"" << site.second << "\"";
         oss << "}";
         first = false;
     }

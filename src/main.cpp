@@ -66,20 +66,21 @@ int main(int argc, char** argv) {
     std::ostringstream oss;
     oss << "rank: " << rank << ", size: " << size << ", steps: " << steps << ", time: " << elapsed_time << std::endl; 
     std::string elapsed_time_data = oss.str();
+    std::cout << elapsed_time_data << std::endl;
     // std::cout << "completed SynchronousRunner run function call" << std::endl;
 
     if (rank == 0) {
         oss.str("");
         oss.clear();
-        oss << "./sim_structure_rank_" << rank << "_size_" << size << "_nsteps_" << steps << ".json";
+        oss << "./sim_structure_nprocs_" << num_procs << "_rank_" << rank << "_size_" << size << "_nsteps_" << steps << ".json";
         std::string sim_structure_file_path = oss.str();
         oss.str("");
         oss.clear();
-        oss << "./sim_result_rank_" << rank << "_size_" << size << "_nsteps_" << steps << ".json";
+        oss << "./sim_result_nprocs_" << num_procs << "_rank_" << rank << "_size_" << size << "_nsteps_" << steps << ".json";
         std::string sim_result_file_path = oss.str();
         oss.str("");
         oss.clear();
-        oss << "./elapsed_time_rank_" << rank << "_size_" << size << "_nsteps_" << steps << ".txt";
+        oss << "./elapsed_time_nprocs_" << num_procs << "_rank_" << rank << "_size_" << size << "_nsteps_" << steps << ".txt";
         std::string elapsed_time_file_path = oss.str();
 
         std::string sim_structure_json = gol_simulation.structure.to_json();

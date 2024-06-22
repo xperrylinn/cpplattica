@@ -14,10 +14,10 @@ class SimulationResult {
 
         SimulationResult();
         SimulationResult(SimulationState initial_state);
-        void add_step(std::vector<mpi_state_change> state_changes);
-        void set_output(SimulationState step);
+        void add_step(std::vector<mpi_state_change>& state_changes);
+        void set_output(SimulationState& step);
         const std::vector<std::vector<mpi_state_change>> get_diffs() const;
-        void set_diffs(std::vector<std::vector<mpi_state_change>> diffs);
+        void set_diffs(std::vector<std::vector<mpi_state_change>>& diffs);
         const std::string to_json() const;
     private:
         std::vector<std::vector<mpi_state_change>> _diffs;      
