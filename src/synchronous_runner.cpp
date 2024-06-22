@@ -81,70 +81,11 @@ SimulationResult SynchronousRunner::_run(
         }
 
         // Print the size of state_updates
-        std::cout << "step: " << i << ", rank: " << rank << ", state_updates.size(): " << state_updates.size() << std::endl;
+        std::cout << "step: " << i << ", rank: " << rank << ", state_updates.size(): " << state_updates.size() << ", recv_buffer.size(): " << recv_buffer.size() << std::endl;
         
-        result.add_step(state_updates);
+        result.add_step(recv_buffer);
     }
-
-    // Explicit barrier to make sure all processes have completed their updates
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    // Gather all results into rank 0
-    // Flatten the local 2D vector into a 1D vector
-    std::vector<mpi_state_change> flat_local_changes;
-    for (const auto& step_diffs : result.get_diffs()) {
-        flat_local_changes.insert(flat_local_changes.end(), step_diffs.begin(), step_diffs.end());
-    }
-
-    // Get the size of the flattened local vector
-    int local_size = flat_local_changes.size();
-    std::cout << "rank: " << rank << ", local_size: " << local_size << std::endl;
-
-    // Gather the sizes from all ranks to rank 0
-    std::vector<int> all_sizes(this->num_procs);
-    MPI_Gather(&local_size, 1, MPI_INT, all_sizes.data(), 1, MPI_INT, 0, MPI_COMM_WORLD);
-
-    // Rank 0 computes the displacement and total size
-    std::vector<int> displs(this->num_procs, 0);
-    int total_size = 0;
-    if (this->rank == 0) {
-        for (int i = 0; i < this->num_procs; ++i) {
-            displs[i] = total_size;
-            total_size += all_sizes[i];
-        }
-    }
-
-    // Rank 0 allocates the receive buffer
-    std::vector<mpi_state_change> all_changes(total_size);
-    std::cout << "rank: " << rank << ", all_changes.size(): " << all_changes.size() << std::endl;
-
-    // Gather all the flattened vectors to rank 0
-    MPI_Gatherv(flat_local_changes.data(), local_size, mpi_state_change_type,
-                all_changes.data(), all_sizes.data(), displs.data(), mpi_state_change_type, 0, MPI_COMM_WORLD);
-
-    // Reconstruct the nested structure on rank 0
-    if (this->rank == 0) {
-        std::vector<std::vector<mpi_state_change>> gathered_changes(num_steps);
-        int offset = 0;
-        for (int i = 1; i < this->num_procs; i += 1) {  // All ranks but zero
-            std::vector<mpi_state_change> inner_vec(
-                all_changes.begin() + offset,
-                all_changes.begin() + offset + all_sizes[i]
-            );
-            gathered_changes[i] = inner_vec;
-            offset += all_sizes[i];
-        }
-
-        // Print the gathered data for verification
-        // for (int i = 0; i < gathered_changes.size(); ++i) {
-        //     for (const auto& change : gathered_changes[i]) {
-        //         std::cout << "{\"step\": " << i << ", \"src_rank\": " << change.src_rank <<  ", \"site_id\": " << change.site_id << ", \"new_state\": " << change.new_state << "}," << std::endl;
-        //     }
-        // }
-
-        result.set_diffs(gathered_changes);
-    }
-
+    result.set_output(live_state);
     return result;
 }
 

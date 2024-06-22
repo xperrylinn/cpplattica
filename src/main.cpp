@@ -30,6 +30,17 @@ int main(int argc, char** argv) {
     MPI_Get_version(&version, &subversion);
     std::cout << "mpi_version: " << version << "." << subversion << std::endl;
 
+    // Check if the correct number of arguments are provided
+    if (argc != 3) {
+        if (rank == 0) {  // Only print error message from rank 0 to avoid clutter
+            std::cerr << "Usage: " << argv[0] << " <size> <steps>" << std::endl;
+        }
+        MPI_Finalize();
+        return 1;
+    }
+    // Get the command line arguments
+    int size = std::stoi(argv[1]);
+    int steps = std::stoi(argv[2]);
 
     // Start timer
     TimePoint startTime = start_timer();
@@ -37,8 +48,7 @@ int main(int argc, char** argv) {
     std::vector<std::string> phases = {"alive", "dead"};    
     PhaseSet phase_set = PhaseSet(phases);
     // std::cout << "created PhaseSet" << std::endl;
-    int size = 5;
-    int steps = 10;
+
     DiscreteGridSetup setup = DiscreteGridSetup(phase_set);
     // std::cout << "created DiscreteGridSetup" << std::endl;
     Simulation gol_simulation = setup.setup_noise(phase_set, size, num_procs, rank);
@@ -53,20 +63,34 @@ int main(int argc, char** argv) {
     // Stop timer
     double elapsed_time = stop_timer(startTime);
 
-    // std::cout << "rank: " << rank << ", size: " << size << ", steps: " << steps << ", time: " << elapsed_time << std::endl; 
+    std::ostringstream oss;
+    oss << "rank: " << rank << ", size: " << size << ", steps: " << steps << ", time: " << elapsed_time << std::endl; 
+    std::string elapsed_time_data = oss.str();
     // std::cout << "completed SynchronousRunner run function call" << std::endl;
 
-    // if (rank == 0) {
-    //     std::string sim_structure_file_path = "./sim_structure_rank_" + std::to_string(rank) + ".json";
-    //     std::string sim_structure_json = gol_simulation.structure.to_json();
-    //     write_string_to_file(sim_structure_file_path, sim_structure_json);
+    if (rank == 0) {
+        oss.str("");
+        oss.clear();
+        oss << "./sim_structure_rank_" << rank << "_size_" << size << "_nsteps_" << steps << ".json";
+        std::string sim_structure_file_path = oss.str();
+        oss.str("");
+        oss.clear();
+        oss << "./sim_result_rank_" << rank << "_size_" << size << "_nsteps_" << steps << ".json";
+        std::string sim_result_file_path = oss.str();
+        oss.str("");
+        oss.clear();
+        oss << "./elapsed_time_rank_" << rank << "_size_" << size << "_nsteps_" << steps << ".txt";
+        std::string elapsed_time_file_path = oss.str();
 
-    //     std::string sim_result_file_path = "./sim_result_rank_" + std::to_string(rank) + ".json";
-    //     std::string sim_result_json = result.to_json();
-    //     write_string_to_file(sim_result_file_path, sim_result_json);
-    // }
+        std::string sim_structure_json = gol_simulation.structure.to_json();
+        write_string_to_file(sim_structure_file_path, sim_structure_json);
 
-    // std::cout << "completed writing JSON to file" << std::endl;
+        std::string sim_result_json = result.to_json();
+        write_string_to_file(sim_result_file_path, sim_result_json);
+
+        write_string_to_file(elapsed_time_file_path, elapsed_time_data);
+    }
+    // std::cout << "completed writing to files" << std::endl;
 
     // for (const auto& site : gol_simulation.structure.sites()) {
     //     std::cout << "site.id: " << site.get_site_id() << ", site.rank: " << site.get_site_rank() << std::endl;

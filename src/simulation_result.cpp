@@ -64,7 +64,6 @@ const std::string SimulationResult::to_json() const {
     
     oss << "]";
 
-    std::cout << this->initial_state.to_json() << std::endl;
     std::ostringstream result;
     result << "{\"initial_state\": " << this->initial_state.to_json();
     result << ", \"diffs\": " << oss.str();
