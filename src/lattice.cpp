@@ -53,6 +53,7 @@ Lattice::Lattice(const std::vector<std::vector<double>>& vecs, arma::vec periodi
     this->vecs = vecs;
     
     this->periodic = periodic;
+    this->periodic.reshape(periodic.size());
 
     arma::mat temp_mat(vecs.size(), vecs[0].size());
     for (int i = 0; i < vecs.size(); i += 1) {

@@ -1,0 +1,8 @@
+2024-06-21 21:14:43,114 - pylattica.logger - DEBUG - Running in parallel using 8 workers
+2024-06-21 21:14:43,116 - pylattica.logger - DEBUG - Distributing 10000 update tasks to 8 workers in chunks of 1250
+2024-06-21 21:29:25,426 - pylattica.logger - DEBUG - Running in parallel using 8 workers
+2024-06-21 21:29:25,428 - pylattica.logger - DEBUG - Distributing 10000 update tasks to 8 workers in chunks of 1250
+2024-06-21 21:34:12,129 - pylattica.logger - DEBUG - Running in parallel using 8 workers
+2024-06-21 21:34:12,131 - pylattica.logger - DEBUG - Distributing 10000 update tasks to 8 workers in chunks of 1250
+2024-06-21 21:34:54,248 - pylattica.logger - DEBUG - Running in series.
+2024-06-21 21:39:20,183 - pylattica.logger - DEBUG - Running in series.
