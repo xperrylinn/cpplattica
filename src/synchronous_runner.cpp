@@ -83,7 +83,7 @@ SimulationResult SynchronousRunner::_run(
         }
 
         // Print the size of state_updates
-        std::cout << "step: " << i << ", rank: " << rank << ", state_updates.size(): " << state_updates.size() << ", recv_buffer.size(): " << recv_buffer.size() << std::endl;
+        // std::cout << "step: " << i << ", rank: " << rank << ", state_updates.size(): " << state_updates.size() << ", recv_buffer.size(): " << recv_buffer.size() << std::endl;
         
         result.add_step(recv_buffer);
     }

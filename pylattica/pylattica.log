@@ -1,0 +1,43 @@
+2024-06-22 21:43:18,085 - pylattica.logger - INFO - Benchmarking simulation with sizes [50, 75, 100, 1000] runs for 3 and num_steps 100 each
+2024-06-22 21:43:18,086 - pylattica.logger - INFO - Benchmarking simulate_serial
+2024-06-22 21:43:18,087 - pylattica.logger - INFO - Beginning trial 0 with size 50
+2024-06-22 21:43:18,478 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:43:19,557 - pylattica.logger - INFO - Completed trial 0 with size 50
+2024-06-22 21:43:19,558 - pylattica.logger - INFO - Beginning trial 1 with size 50
+2024-06-22 21:43:19,897 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:43:20,974 - pylattica.logger - INFO - Completed trial 1 with size 50
+2024-06-22 21:43:20,974 - pylattica.logger - INFO - Beginning trial 2 with size 50
+2024-06-22 21:43:21,314 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:43:22,397 - pylattica.logger - INFO - Completed trial 2 with size 50
+2024-06-22 21:43:22,397 - pylattica.logger - INFO - Beginning trial 0 with size 75
+2024-06-22 21:43:23,160 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:43:25,585 - pylattica.logger - INFO - Completed trial 0 with size 75
+2024-06-22 21:43:25,589 - pylattica.logger - INFO - Beginning trial 1 with size 75
+2024-06-22 21:43:26,347 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:43:28,783 - pylattica.logger - INFO - Completed trial 1 with size 75
+2024-06-22 21:43:28,784 - pylattica.logger - INFO - Beginning trial 2 with size 75
+2024-06-22 21:43:29,543 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:43:31,975 - pylattica.logger - INFO - Completed trial 2 with size 75
+2024-06-22 21:43:31,976 - pylattica.logger - INFO - Beginning trial 0 with size 100
+2024-06-22 21:43:33,338 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:43:37,693 - pylattica.logger - INFO - Completed trial 0 with size 100
+2024-06-22 21:43:37,697 - pylattica.logger - INFO - Beginning trial 1 with size 100
+2024-06-22 21:43:39,048 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:43:43,380 - pylattica.logger - INFO - Completed trial 1 with size 100
+2024-06-22 21:43:43,381 - pylattica.logger - INFO - Beginning trial 2 with size 100
+2024-06-22 21:43:44,736 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:43:49,139 - pylattica.logger - INFO - Completed trial 2 with size 100
+2024-06-22 21:43:49,140 - pylattica.logger - INFO - Beginning trial 0 with size 1000
+2024-06-22 21:47:26,602 - pylattica.logger - INFO - Benchmarking simulation with sizes [10, 100, 1000] runs for 1 and num_steps 100 each
+2024-06-22 21:47:26,602 - pylattica.logger - INFO - Benchmarking simulate_serial
+2024-06-22 21:47:26,602 - pylattica.logger - INFO - Beginning trial 0 with size 10
+2024-06-22 21:47:26,635 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:47:26,704 - pylattica.logger - INFO - Completed trial 0 with size 10
+2024-06-22 21:47:26,704 - pylattica.logger - INFO - Beginning trial 0 with size 100
+2024-06-22 21:47:28,063 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:47:33,459 - pylattica.logger - INFO - Completed trial 0 with size 100
+2024-06-22 21:47:33,463 - pylattica.logger - INFO - Beginning trial 0 with size 1000
+2024-06-22 21:49:49,284 - pylattica.logger - DEBUG - Running in series.
+2024-06-22 21:59:04,171 - pylattica.logger - INFO - Completed trial 0 with size 1000
+2024-06-22 21:59:04,173 - pylattica.logger - INFO - Finished collecting simulate_serial results. Writing to CSV.
+2024-06-22 21:59:04,204 - pylattica.logger - INFO - Data aggregation

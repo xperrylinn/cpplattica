@@ -12,8 +12,8 @@ import time
 # Constants
 gol_phases = ["dead", "alive"]
 num_steps = 100
-sizes = [50, 75, 100, 1000]
-num_trials = 3
+sizes = [10, 100, 1000]
+num_trials = 1
 
 
 def simulate_serial(size: List[int], num_steps: int):
@@ -66,36 +66,37 @@ if __name__ == "__main__":
     results = benchmark_simulation(fxn=simulate_serial, sizes=sizes, num_trials=num_trials, num_steps=num_steps)
     logger.info(f"Finished collecting {simulate_serial.__name__} results. Writing to CSV.")
     serial_df = pd.DataFrame(data=results, columns=["size", "trial", "num_steps", "time (seconds)"])
+    serial_df = serial_df.groupby(by=["size"]).agg({"time (seconds)": np.mean})
     output_file_path = "gol_serial.csv"
     serial_df.to_csv(path_or_buf=output_file_path, index=False)
 
-    logger.info(f"Benchmarking {simulate_parallel.__name__}")
-    results = benchmark_simulation(fxn=simulate_parallel, sizes=sizes, num_trials=num_trials, num_steps=num_steps)
-    logger.info(f"Finished collecting {simulate_parallel.__name__} results. Writing to CSV.")
-    parallel_df = pd.DataFrame(data=results, columns=["size", "trial", "num_steps", "time (seconds)"])
-    output_file_path = "gol_parallel.csv"
-    parallel_df.to_csv(path_or_buf=output_file_path, index=False)
+    # logger.info(f"Benchmarking {simulate_parallel.__name__}")
+    # results = benchmark_simulation(fxn=simulate_parallel, sizes=sizes, num_trials=num_trials, num_steps=num_steps)
+    # logger.info(f"Finished collecting {simulate_parallel.__name__} results. Writing to CSV.")
+    # parallel_df = pd.DataFrame(data=results, columns=["size", "trial", "num_steps", "time (seconds)"])
+    # output_file_path = "gol_parallel.csv"
+    # parallel_df.to_csv(path_or_buf=output_file_path, index=False)
 
     logger.info("Data aggregation")
-    serial_df = serial_df.groupby(by=["size"]).agg({"time (seconds)": np.mean})
-    parallel_df = parallel_df.groupby(by=["size"]).agg({"time (seconds)": np.mean})
+    # serial_df = serial_df.groupby(by=["size"]).agg({"time (seconds)": np.mean})
+    # parallel_df = parallel_df.groupby(by=["size"]).agg({"time (seconds)": np.mean})
 
-    logger.info("Plotting")
-    plt.figure(figsize=(10, 6))
+    # logger.info("Plotting")
+    # plt.figure(figsize=(10, 6))
 
-    plt.scatter(sizes, serial_df["time (seconds)"], label="serial", color='blue', linestyle='-', marker='o', linewidth=2)
-    plt.scatter(sizes, parallel_df["time (seconds)"], label="parallel", color='red', linestyle='-', marker='^', linewidth=2)
+    # plt.scatter(sizes, serial_df["time (seconds)"], label="serial", color='blue', linestyle='-', marker='o', linewidth=2)
+    # plt.scatter(sizes, parallel_df["time (seconds)"], label="parallel", color='red', linestyle='-', marker='^', linewidth=2)
 
-    plt.xlabel("size")
-    plt.ylabel("time (seconds)")
-    plt.title("Original Implementation\nParallel & Serial Run Times")
+    # plt.xlabel("size")
+    # plt.ylabel("time (seconds)")
+    # plt.title("Original Implementation\nParallel & Serial Run Times")
 
-    plt.legend(loc="upper right")
+    # plt.legend(loc="upper right")
 
-    output_file = "parallel_serial_original.png"
+    # output_file = "parallel_serial_original.png"
 
-    plt.grid(True)
-    plt.savefig(output_file)
+    # plt.grid(True)
+    # plt.savefig(output_file)
 
-    logger.info(f"Plot saved as '{output_file}'")
+    # logger.info(f"Plot saved as '{output_file}'")
 
